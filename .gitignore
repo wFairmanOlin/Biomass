@@ -1,5 +1,6 @@
-splash response
-haucs/mission_planner/test.py
+old_mechanical/
+current_mechanical/
+biomass_sd/
 *.pyc
 *.egg-info
 *fb_key.json
