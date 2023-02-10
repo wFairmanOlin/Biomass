@@ -91,18 +91,17 @@ ref = db.reference('/')
 ############ GLOBAL VARIABLES #####################
 #serial input buffer
 buf = b''
-#latest GPS DATA
-gps_data = dict()
-#latest SAMPLE DATA
-sensor_data = dict()
-timestamp = ""
-gps_updated = False
-sensor_updated = False
+
+golay_timeout = 5
+prev_id = -1
+prev_time = 0
+golay = dict()
 
 
 ########### MAIN LOOP ############################
 while True:
     
+
     c = ser.read()
     if(c):
         buf = b''.join([buf, c])
@@ -116,9 +115,9 @@ while True:
                 sensor_id = "bmass_" + str(int(message[1]) - 1)
                 message_id = message[2]
                 message_time = time.strftime('%Y%m%d_%H:%M:%S', time.localtime(time.time()))
+                print(message_id + " " + message_time)
                 
                 if message_id == "status":
-                    print(len(message))
                     if len(message) == 11:
                         data = {message[3] : message[4], message[5] : message[6], message[7] : message[8], message[9] : message[10]}
                         sensor_ref = ref.child(sensor_id + "/" + message_id)
@@ -126,17 +125,21 @@ while True:
                     else:
                         continue
 
-                if message_id == "golay":
-                    print(len(message))
-                    if len(message) == 69:
-                        data = dict()
-                        data["seq_a"] = message[4:36]
-                        data["seq_b"] = message[37:]
+                if message_id == "golay_a":
+                    prev_id = sensor_id
+                    prev_time = time.time()
+                    if len(message) == 35:
+                        golay["seq_a"] = message[3:]
                     else:
                         continue
                 
-                    sensor_ref = ref.child(sensor_id + "/" + message_id)
-                    sensor_ref.child(message_time).set(data)
+                if message_id == "golay_b":
+                    if (prev_id == sensor_id) and ( (time.time() - prev_time) < golay_timeout):
+                        golay["seq_b"] = message[3:]
+                        sensor_ref = ref.child(sensor_id + "/golay")
+                        sensor_ref.child(message_time).set(golay)
+                    else:
+                        print("golay b not received in time")
                     
     
 

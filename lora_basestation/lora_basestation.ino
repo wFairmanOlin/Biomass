@@ -47,8 +47,10 @@ void setup()
   if (!manager.init())
     Serial.println("init failed");
 
+  manager.setTimeout(1000);
+  driver.setModemConfig(RH_RF95::Bw125Cr45Sf128);
 //  breaks esp32 boards  
-//  driver.setFrequency(RF95_FREQ);
+  driver.setFrequency(RF95_FREQ);
 
   driver.setTxPower(23, false);
   Serial.println("Setup is a Success!");
@@ -92,17 +94,31 @@ void loop()
           Serial.println("Status Message Mismatch!");
       }
 
-      //handle golay messages
+      //handle golay A messages
       if(buf[0] == 2){
         //check length
         if(buf[1] == (len - 2)){
           Serial.print("from "); Serial.print(from);
-          Serial.print(" golay a");
+          Serial.print(" golay_a");
           for(int i = 2; i < len; i += 2){
-            if(i == 66)
-              Serial.print(" b ");
-            else
-              Serial.print(" ");
+            Serial.print(" ");
+            int val = ((buf[i] << 8) | buf[i+1]);
+            Serial.print(val);
+          }
+          Serial.println();
+        }
+        else
+          Serial.println("Golay A Message Length Mismatch!");
+      }
+      
+      //handle golay B messages
+      if(buf[0] == 3){
+        //check length
+        if(buf[1] == (len - 2)){
+          Serial.print("from "); Serial.print(from);
+          Serial.print(" golay_b");
+          for(int i = 2; i < len; i += 2){
+            Serial.print(" ");
             int val = ((buf[i] << 8) | buf[i+1]);
             Serial.print(val);
           }
