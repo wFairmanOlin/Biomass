@@ -17,6 +17,7 @@
 #define RFM95_RST 4
 #define RFM95_INT 7
 #define LED 13
+#define BATT_PIN A9
 
 
 //for HELTEC LORA
@@ -24,9 +25,10 @@
 //#define RFM95_RST 14
 //#define RFM95_INT 26
 //#define LED 25
+//#define BATT_PIN 37
 
 #define SERVER_ADDRESS 1
-#define CLIENT_ADDRESS 2
+#define CLIENT_ADDRESS 4
 
 //Set Frequency
 #define RF95_FREQ 915.0
@@ -74,7 +76,9 @@ void setup()
    *  If data rate is slower, increase timeout below
    */
   manager.setTimeout(5000);
-  driver.setModemConfig(RH_RF95::Bw125Cr45Sf128);
+//  driver.setModemConfig(RH_RF95::Bw125Cr45Sf2048);
+  driver.setSpreadingFactor(10);
+  driver.setSignalBandwidth(125000);
   driver.setFrequency(RF95_FREQ);
   driver.setTxPower(23, false);
   
@@ -85,9 +89,10 @@ uint8_t buf[RH_RF95_MAX_MESSAGE_LEN];
 
 void loop()
 {
-  //update every 5 seconds
-  if ((millis() - prev_update) > 30000 + CLIENT_ADDRESS){
-    prev_update = millis();
+  //update every 5 minutes seconds
+  delay(300000 + CLIENT_ADDRESS);
+//  if ((millis() - prev_update) > 000 + CLIENT_ADDRESS){
+//    prev_update = millis();
     digitalWrite(LED, HIGH);
     
     //write golay data A -> message ID 2
@@ -104,7 +109,7 @@ void loop()
     else
       Serial.println("Golay A Message Not Received");
     digitalWrite(LED,LOW);
-    delay(200);
+    delay(1000);
     digitalWrite(LED,HIGH);
 
     //write golay data B -> message ID 3
@@ -115,13 +120,13 @@ void loop()
         golay_message[i] = test_golay_b[(i - 2) / 2] >> 8;
         golay_message[i + 1] = test_golay_b[(i - 2) / 2];
     }
-    //send golay message A
+    //send golay message B
     if (manager.sendtoWait(golay_message, sizeof(golay_message), SERVER_ADDRESS))
       Serial.println("Golay B Message Acknowledged");
     else
       Serial.println("Golay B Message Not Received");
     digitalWrite(LED,LOW);
-    delay(200);
+    delay(1000);
     digitalWrite(LED,HIGH);
 
     
@@ -138,14 +143,14 @@ void loop()
     else
       Serial.println("Status Message Not Received");
     digitalWrite(LED, LOW);
-  }
+//  }
 }
 
 
 int read_battery(){
   int measured_vbat = 0;
   for(int i = 0; i < 10; i++){
-    measured_vbat += analogRead(A9);
+    measured_vbat += analogRead(BATT_PIN);
   }
   Serial.print("Batt V ");
   float vbat_f = measured_vbat / 10 * 6.6 / 1024;

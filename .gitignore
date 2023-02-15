@@ -1,8 +1,10 @@
 old_mechanical/
 current_mechanical/
 biomass_sd/
+PCB_Design/
 *.pyc
 *.egg-info
 *fb_key.json
 *.vscode
 *.DS_store
+*.log

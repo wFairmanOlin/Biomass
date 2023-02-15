@@ -12,16 +12,16 @@
 #include <RHReliableDatagram.h>
 
 //for feather32u4 
-//#define RFM95_CS 8
-//#define RFM95_RST 4
-//#define RFM95_INT 7
-//#define LED 13
+#define RFM95_CS 8
+#define RFM95_RST 4
+#define RFM95_INT 7
+#define LED 13
 
 //for HELTEC LORA
-#define RFM95_CS 18
-#define RFM95_RST 14
-#define RFM95_INT 26
-#define LED 25
+//#define RFM95_CS 18
+//#define RFM95_RST 14
+//#define RFM95_INT 26
+//#define LED 25
 
 #define SERVER_ADDRESS 1
 #define CLIENT_ADDRESS 2
@@ -47,8 +47,20 @@ void setup()
   if (!manager.init())
     Serial.println("init failed");
 
-  manager.setTimeout(1000);
-  driver.setModemConfig(RH_RF95::Bw125Cr45Sf128);
+  /*  MODEM CONFIG IMPORTANT!!!
+   *   
+   *  Bw125Cr45Sf128   -> Bw = 125 kHz, Cr = 4/5, Sf = 128chips/symbol, CRC on. Default medium range. 
+   *  Bw500Cr45Sf128   -> Bw = 500 kHz, Cr = 4/5, Sf = 128chips/symbol, CRC on. Fast+short range. 
+   *  Bw31_25Cr48Sf512 -> Bw = 31.25 kHz, Cr = 4/8, Sf = 512chips/symbol, CRC on. Slow+long range.
+   *  Bw125Cr48Sf4096  -> Bw = 125 kHz, Cr = 4/8, Sf = 4096chips/symbol, low data rate, CRC on. Slow+long range.
+   *  Bw125Cr45Sf2048  -> Bw = 125 kHz, Cr = 4/5, Sf = 2048chips/symbol, CRC on. Slow+long range.
+   *  
+   *  If data rate is slower, increase timeout below
+   */
+  manager.setTimeout(5000);
+//  driver.setModemConfig(RH_RF95::Bw125Cr45Sf2048);
+  driver.setSpreadingFactor(10);
+  driver.setSignalBandwidth(125000);
 //  breaks esp32 boards  
   driver.setFrequency(RF95_FREQ);
 

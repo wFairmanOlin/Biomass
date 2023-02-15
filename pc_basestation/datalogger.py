@@ -2,10 +2,12 @@ import os
 import csv
 import serial
 import time
+import logging
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
 from datetime import datetime
+
 
 # Based off the THE GREAT PUMPKIN PLOTTER
 
@@ -18,11 +20,16 @@ def init_serial(port):
     """
     global ser
 
-    ser = serial.Serial(port=port, baudrate=115200,
-                         parity=serial.PARITY_NONE,
-                          stopbits=serial.STOPBITS_ONE,
-                           bytesize=serial.EIGHTBITS,
-                            timeout=0)
+    try: 
+        ser = serial.Serial(port=port, baudrate=115200,
+                            parity=serial.PARITY_NONE,
+                            stopbits=serial.STOPBITS_ONE,
+                            bytesize=serial.EIGHTBITS,
+                                timeout=0)
+    except:
+        logger.exception("serial init failed")
+        raise
+
     return ser
 
 
@@ -74,10 +81,15 @@ def uploadData(gdata, sdata, timestamp):
 
     pref.child(timestamp).set({"GPSData" : gdata, "SensorData" : sdata})
 
-
+############# LOGGING #################
+logging.basicConfig(format='%(asctime)s %(levelname)s: %(message)s', filename='datalogger.log', encoding='utf-8', level=logging.DEBUG)
+logger = logging.getLogger(__name__)
+logging.info('Starting')
 ############# SERIAL PORT VARIABLES ################
 # port = '/dev/cu.usbserial-2'
-port = '/dev/cu.usbserial-0001'
+# port = '/dev/cu.usbserial-0001'
+port = '/dev/ttyACM0'
+# port = '/dev/ttyUSB0'
 ser  = init_serial(port)
 
 
@@ -101,8 +113,11 @@ golay = dict()
 ########### MAIN LOOP ############################
 while True:
     
+    try:
+        c = ser.read()
+    except:
+        logger.exception("reading serial buffer failed")
 
-    c = ser.read()
     if(c):
         buf = b''.join([buf, c])
 
@@ -120,10 +135,13 @@ while True:
                 if message_id == "status":
                     if len(message) == 11:
                         data = {message[3] : message[4], message[5] : message[6], message[7] : message[8], message[9] : message[10]}
-                        sensor_ref = ref.child(sensor_id + "/" + message_id)
-                        sensor_ref.child(message_time).set(data)
+                        try:
+                            sensor_ref = ref.child(sensor_id + "/" + message_id)
+                            sensor_ref.child(message_time).set(data)
+                        except:
+                            logger.exception("uploading status message failed")
                     else:
-                        continue
+                        logger.warning("Status Message Length Mis-Match %s", message)
 
                 if message_id == "golay_a":
                     prev_id = sensor_id
@@ -131,15 +149,21 @@ while True:
                     if len(message) == 35:
                         golay["seq_a"] = message[3:]
                     else:
-                        continue
+                        logger.warning("Golay Message Length Mis-Match %s", message)
                 
                 if message_id == "golay_b":
-                    if (prev_id == sensor_id) and ( (time.time() - prev_time) < golay_timeout):
-                        golay["seq_b"] = message[3:]
-                        sensor_ref = ref.child(sensor_id + "/golay")
-                        sensor_ref.child(message_time).set(golay)
+                    if len(message) == 35:
+                        if (prev_id == sensor_id) and ( (time.time() - prev_time) < golay_timeout):
+                            golay["seq_b"] = message[3:]
+                            try:
+                                sensor_ref = ref.child(sensor_id + "/golay")
+                                sensor_ref.child(message_time).set(golay)
+                            except:
+                                logger.exception("uploading golay message failed")
+                        else:
+                            logger.warning("Golay Timeout")
                     else:
-                        print("golay b not received in time")
+                        logger.warning("Golay Message Length Mis-Match %s", message)
                     
     
 
