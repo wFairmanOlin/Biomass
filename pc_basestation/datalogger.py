@@ -10,7 +10,8 @@ from datetime import datetime
 
 
 # Based off the THE GREAT PUMPKIN PLOTTER
-
+# Chill Before Turning On
+time.sleep(10)
 ######### COMPATIBLE SERIAL MESSAGES ##############
 
 
@@ -82,14 +83,14 @@ def uploadData(gdata, sdata, timestamp):
     pref.child(timestamp).set({"GPSData" : gdata, "SensorData" : sdata})
 
 ############# LOGGING #################
-logging.basicConfig(format='%(asctime)s %(levelname)s: %(message)s', filename='datalogger.log', encoding='utf-8', level=logging.DEBUG)
+logging.basicConfig(format='%(asctime)s %(levelname)s: %(message)s', filename='log.log', encoding='utf-8', level=logging.INFO)
 logger = logging.getLogger(__name__)
 logging.info('Starting')
 ############# SERIAL PORT VARIABLES ################
 # port = '/dev/cu.usbserial-2'
 # port = '/dev/cu.usbserial-0001'
-port = '/dev/ttyACM0'
-# port = '/dev/ttyUSB0'
+# port = '/dev/ttyACM0'
+port = '/dev/ttyUSB0'
 ser  = init_serial(port)
 
 
@@ -107,12 +108,18 @@ buf = b''
 golay_timeout = 5
 prev_id = -1
 prev_time = 0
+last_message_received = time.time()
 golay = dict()
 
 
 ########### MAIN LOOP ############################
 while True:
     
+    #Log Issue if No Message Received after 30 mins
+    if (time.time() - last_message_received) > 1800:
+        logger.warning("No Message Received for 30 Minutes")
+        last_messaged_received = time.time()
+
     try:
         c = ser.read()
     except:
@@ -125,12 +132,13 @@ while True:
             message = buf.decode()
             message = message.split()
             buf = b''
+            last_message_received = time.time()
 
             if len(message) >= 1:
                 sensor_id = "bmass_" + str(int(message[1]) - 1)
                 message_id = message[2]
                 message_time = time.strftime('%Y%m%d_%H:%M:%S', time.localtime(time.time()))
-                print(message_id + " " + message_time)
+                # print(message_id + " " + message_time)
                 
                 if message_id == "status":
                     if len(message) == 11:
@@ -164,10 +172,8 @@ while True:
                             logger.warning("Golay Timeout")
                     else:
                         logger.warning("Golay Message Length Mis-Match %s", message)
-                    
-    
 
-
+logger.warning("Exited While Loop ?!")
 ser.close()
 
 
