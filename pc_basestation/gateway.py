@@ -1,4 +1,4 @@
-# Based off the THE GREAT PUMPKIN PLOTTER
+# Based off THE GREAT PUMPKIN PLOTTER
 import os
 import serial
 import time
@@ -13,18 +13,18 @@ from datetime import datetime
 # To configure this script to run on startup for unix systems
 # add a command to the cron scheduler using crontab.
 #
-# Run "crontab -e" to open the editor
+# Run "sudo crontab -e" to open the editor
 #
 # Paste the following line
 #
-# @reboot /usr/bin/python3 /home/Desktop/Biomass/pc_basestation/gateway.py &>> /home/Desktop/Biomass/pc_baestation/cronlog.log
+# @reboot /usr/bin/python3 /home/Desktop/Biomass/pc_basestation/gateway.py &>> /home/Desktop/Biomass/pc_basetation/cronlog.log
 #
 # This runs the program when the device is powered on and stores the output in
 # the local "cronlog.log" file. Please note that the python script outputs a more detailed
 # log in the local "log.log" file.
 #
 # Let the computer establish a network connection on reboot
-time.sleep(10)
+folder = "~/Desktop/Biomass/pc_basestation/"
 #############################################
 
 
@@ -48,7 +48,7 @@ def init_serial(port):
 
 
 ############### LOGGING ###############
-logging.basicConfig(format='%(asctime)s %(levelname)s: %(message)s', filename='log.log', encoding='utf-8', level=logging.INFO)
+logging.basicConfig(format='%(asctime)s %(levelname)s: %(message)s', filename=folder + 'log.log', encoding='utf-8', level=logging.INFO)
 logger = logging.getLogger(__name__)
 logging.info('Starting')
 
@@ -61,7 +61,7 @@ ser  = init_serial(port)
 
 ############### FIREBASE VARIABLES ###############
 #Store Key in separate file !!!
-cred = credentials.Certificate("fb_key.json")
+cred = credentials.Certificate(folder + "fb_key.json")
 firebase_admin.initialize_app(cred, {'databaseURL': 'https://haucs-monitoring-default-rtdb.firebaseio.com'})
 ref = db.reference('/')
 
