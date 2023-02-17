@@ -1,5 +1,5 @@
+# Based off the THE GREAT PUMPKIN PLOTTER
 import os
-import csv
 import serial
 import time
 import logging
@@ -9,10 +9,23 @@ from firebase_admin import db
 from datetime import datetime
 
 
-# Based off the THE GREAT PUMPKIN PLOTTER
-# Chill Before Turning On
+############### Running On Startup ###############
+# To configure this script to run on startup for unix systems
+# add a command to the cron scheduler using crontab.
+#
+# Run "crontab -e" to open the editor
+#
+# Paste the following line
+#
+# @reboot /usr/bin/python3 /home/Desktop/Biomass/pc_basestation/gateway.py &>> /home/Desktop/Biomass/pc_baestation/cronlog.log
+#
+# This runs the program when the device is powered on and stores the output in
+# the local "cronlog.log" file. Please note that the python script outputs a more detailed
+# log in the local "log.log" file.
+#
+# Let the computer establish a network connection on reboot
 time.sleep(10)
-######### COMPATIBLE SERIAL MESSAGES ##############
+#############################################
 
 
 def init_serial(port):
@@ -34,91 +47,43 @@ def init_serial(port):
     return ser
 
 
-def writeCSV(file, time, data):
-    with open(file,'a',newline='') as csvfile:
-      writer = csv.writer(csvfile, delimiter=',')
-      writer.writerow([time, *data])
-
-
-def init_file(header):
-    filePath = "data"
-
-    date = datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
-
-    if not os.path.exists(filePath):
-        os.mkdir(filePath)
-
-    csvFile = filePath + "/" + date + ".csv"
-
-    with open(csvFile,'w',newline='') as csvfile:
-      writer = csv.writer(csvfile, delimiter=',')
-      writer.writerow(header)
-
-    return csvFile
-
-def processSensor(message):
-    """
-    Converts message list into a sensor data dictionary
-    """
-    data = dict()
-    i = 1
-    while i < len(message):
-        data[i // 6 + 1] = {message[i] : message[i + 1], message[i + 2] : message[i + 3], 
-                    message[i + 4] : message[i + 5]}
-        i += 6
-
-    return data
-
-def uploadData(gdata, sdata, timestamp):
-    """
-    Uploads Data to the Real-Time Database in Firebase. Pond ID is currently
-    hardcoded. Will be replaced by a lookup table in a future version
-    """
-    pid = str(findPond(gdata["LAT"], gdata["LNG"]))
-    print(pid)
-
-    #select pond
-    pref = ref.child(pid)
-
-    pref.child(timestamp).set({"GPSData" : gdata, "SensorData" : sdata})
-
-############# LOGGING #################
+############### LOGGING ###############
 logging.basicConfig(format='%(asctime)s %(levelname)s: %(message)s', filename='log.log', encoding='utf-8', level=logging.INFO)
 logger = logging.getLogger(__name__)
 logging.info('Starting')
-############# SERIAL PORT VARIABLES ################
+
+############### SERIAL PORT VARIABLES ###############
 # port = '/dev/cu.usbserial-2'
 # port = '/dev/cu.usbserial-0001'
 # port = '/dev/ttyACM0'
 port = '/dev/ttyUSB0'
 ser  = init_serial(port)
 
-
-############ FIREBASE VARIABLES ####################
+############### FIREBASE VARIABLES ###############
 #Store Key in separate file !!!
 cred = credentials.Certificate("fb_key.json")
 firebase_admin.initialize_app(cred, {'databaseURL': 'https://haucs-monitoring-default-rtdb.firebaseio.com'})
 ref = db.reference('/')
 
+############### GLOBAL VARIABLES ###############
+buf = b'' #serial input buffer
 
-############ GLOBAL VARIABLES #####################
-#serial input buffer
-buf = b''
+golay = dict()    #dictionary holding latest golay message
+golay_timeout = 5 #max time (secs) to receive complete golay message
+prev_id = -1      #id of last sensor to send a golay message
+prev_time = 0     #time that previous golay message was received
 
-golay_timeout = 5
-prev_id = -1
-prev_time = 0
-last_message_received = time.time()
-golay = dict()
+last_message_received = time.time() #time that latest general message was received
 
-
-########### MAIN LOOP ############################
+############### MAIN LOOP ###############
 while True:
     
-    #Log Issue if No Message Received after 30 mins
+    #Log Warning if No Message Received after 30 mins
+    #reboot computer to power cycle the LoRa Receiver
     if (time.time() - last_message_received) > 1800:
         logger.warning("No Message Received for 30 Minutes")
         last_messaged_received = time.time()
+        #os.system('sudo reboot')
 
     try:
         c = ser.read()
@@ -169,14 +134,11 @@ while True:
                             except:
                                 logger.exception("uploading golay message failed")
                         else:
-                            logger.warning("Golay Timeout")
+                            logger.warning("Golay Timeout or Interrupted by Another Sensor")
                     else:
                         logger.warning("Golay Message Length Mis-Match %s", message)
+############### END MAIN LOOP ###############
 
-logger.warning("Exited While Loop ?!")
+logger.warning("Exited While Loop")
 ser.close()
-
-
-
-
 
