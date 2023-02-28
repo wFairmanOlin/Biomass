@@ -12,16 +12,16 @@
 #include <RHReliableDatagram.h>
 
 //for feather32u4 
-#define RFM95_CS 8
-#define RFM95_RST 4
-#define RFM95_INT 7
-#define LED 13
+//#define RFM95_CS 8
+//#define RFM95_RST 4
+//#define RFM95_INT 7
+//#define LED 13
 
 //for HELTEC LORA
-//#define RFM95_CS 18
-//#define RFM95_RST 14
-//#define RFM95_INT 26
-//#define LED 25
+#define RFM95_CS 18
+#define RFM95_RST 14
+#define RFM95_INT 26
+#define LED 25
 
 #define SERVER_ADDRESS 1
 #define CLIENT_ADDRESS 2

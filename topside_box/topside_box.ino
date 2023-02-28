@@ -10,6 +10,9 @@
 #include <SPI.h>
 #include <RH_RF95.h>
 #include <RHReliableDatagram.h>
+#include <avr/sleep.h> //for low power operations
+#include <avr/power.h> //for low power operations
+#include <avr/wdt.h>   //for low power operations
 
 
 // for feather32u4 
@@ -28,10 +31,13 @@
 //#define BATT_PIN 37
 
 #define SERVER_ADDRESS 1
-#define CLIENT_ADDRESS 4
+#define CLIENT_ADDRESS 3 //change this
 
 //Set Frequency
 #define RF95_FREQ 915.0
+
+//Schedule Updates in Minutes
+#define UPDATE_FREQ 15
 
 // Singleton instance of the radio driver
 RH_RF95 driver(RFM95_CS, RFM95_INT);
@@ -54,6 +60,11 @@ uint8_t status_message[4];
 /* COUNTERS */
 unsigned long prev_update = 0;
 
+/* Watchdog Timer for Low Power Mode*/
+int wdt_counter = 0;
+ISR (WDT_vect){
+  wdt_disable(); //end watchdog
+}
 void setup()
 {
   Serial.begin(115200);
@@ -81,7 +92,11 @@ void setup()
   driver.setSignalBandwidth(125000);
   driver.setFrequency(RF95_FREQ);
   driver.setTxPower(23, false);
-  
+  digitalWrite(LED, HIGH);
+  delay(2000);
+  send_messages();
+  delay(1000);
+  digitalWrite(LED, LOW);
 }
 
 //for receiving messages
@@ -89,12 +104,28 @@ uint8_t buf[RH_RF95_MAX_MESSAGE_LEN];
 
 void loop()
 {
-  //update every 5 minutes seconds
-  delay(300000 + CLIENT_ADDRESS);
-//  if ((millis() - prev_update) > 000 + CLIENT_ADDRESS){
-//    prev_update = millis();
+  int wdt_limit = UPDATE_FREQ * 60 / 8;
+  if (wdt_counter >= wdt_limit){
+    wdt_counter = 0;
+    send_messages();
+  }
+  
+  /* end of loop handles putting uC to sleep*/
+  wdt_counter ++;
+  //configure watchdog timer to go off in 8 seconds
+  WDTCSR = bit(WDCE) | bit(WDE);
+  WDTCSR = bit(WDIE) | bit(WDP3) | bit(WDP0);
+  wdt_reset();
+
+  set_sleep_mode(SLEEP_MODE_PWR_DOWN);
+  sleep_enable();
+  sleep_cpu();
+  sleep_disable();
+}
+
+void send_messages(){
+    delay(CLIENT_ADDRESS); //add unique delay
     digitalWrite(LED, HIGH);
-    
     //write golay data A -> message ID 2
     Serial.println("Sending Golay A");
     golay_message[0] = 2;
@@ -109,7 +140,7 @@ void loop()
     else
       Serial.println("Golay A Message Not Received");
     digitalWrite(LED,LOW);
-    delay(1000);
+    delay(100);
     digitalWrite(LED,HIGH);
 
     //write golay data B -> message ID 3
@@ -126,10 +157,9 @@ void loop()
     else
       Serial.println("Golay B Message Not Received");
     digitalWrite(LED,LOW);
-    delay(1000);
+    delay(100);
     digitalWrite(LED,HIGH);
 
-    
     //write status message -> message ID 1
     int vbat = read_battery();
     status_message[0] = 1;
@@ -142,8 +172,9 @@ void loop()
       Serial.println("Status Message Acknowledged");
     else
       Serial.println("Status Message Not Received");
+    
+    driver.sleep(); //powers down radio module. Has time delay for starting up again
     digitalWrite(LED, LOW);
-//  }
 }
 
 

@@ -17,7 +17,7 @@ from datetime import datetime
 #
 # Paste the following line
 #
-# @reboot /usr/bin/python3 /home/Desktop/Biomass/pc_basestation/gateway.py &>> /home/Desktop/Biomass/pc_basetation/cronlog.log
+# @reboot /usr/bin/python3 /home/Desktop/Biomass/pc_basestation/gateway.py &>> /home/Desktop/Biomass/pc_basestation/cronlog.log
 #
 # This runs the program when the device is powered on and stores the output in
 # the local "cronlog.log" file. Please note that the python script outputs a more detailed
@@ -100,7 +100,12 @@ while True:
             last_message_received = time.time()
 
             if len(message) >= 1:
-                sensor_id = "bmass_" + str(int(message[1]) - 1)
+                try:
+                    sensor_id = "bmass_" + str(int(message[1]) - 1)
+                except:
+                    logger.warning("Invalid Sensor ID Received. Skipping ...")
+                    continue
+                
                 message_id = message[2]
                 message_time = time.strftime('%Y%m%d_%H:%M:%S', time.localtime(time.time()))
                 # print(message_id + " " + message_time)
