@@ -24,7 +24,7 @@ from datetime import datetime
 # log in the local "log.log" file.
 #
 # Let the computer establish a network connection on reboot
-folder = "~/Desktop/Biomass/pc_basestation/"
+folder = "Desktop/Biomass/pc_basestation/"
 #############################################
 
 
@@ -105,7 +105,7 @@ while True:
                 except:
                     logger.warning("Invalid Sensor ID Received. Skipping ...")
                     continue
-                
+
                 message_id = message[2]
                 message_time = time.strftime('%Y%m%d_%H:%M:%S', time.localtime(time.time()))
                 # print(message_id + " " + message_time)

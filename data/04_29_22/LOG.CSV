@@ -1,0 +1,4288 @@
+day,sec,event,value
+0,0,system on,
+0,0,battery,
+4.10
+0,901,measurement,
+0,901,battery,4.10
+0,901,charging,0
+0,1802,measurement,
+0,1802,battery,4.10
+0,1802,charging,0
+0,2703,measurement,
+0,2703,battery,4.10
+0,2703,charging,1
+0,3604,measurement,
+0,3604,battery,4.10
+0,3604,charging,1
+0,4505,measurement,
+0,4505,battery,4.11
+0,4505,charging,1
+0,5406,measurement,
+0,5406,battery,4.09
+0,5406,charging,1
+0,6307,measurement,
+0,6307,battery,4.10
+0,6307,charging,1
+0,7208,measurement,
+0,7208,battery,4.10
+0,7208,charging,1
+0,8109,measurement,
+0,8109,battery,4.10
+0,8109,charging,1
+0,9010,measurement,
+0,9010,battery,4.09
+0,9010,charging,1
+0,9911,measurement,
+0,9911,battery,4.09
+0,9911,charging,1
+0,10812,measurement,
+0,10812,battery,4.09
+0,10812,charging,1
+0,11713,measurement,
+0,11713,battery,4.09
+0,11713,charging,1
+0,12614,measurement,
+0,12614,battery,4.08
+0,12614,charging,1
+0,13515,measurement,
+0,13515,battery,4.08
+0,13515,charging,1
+0,14416,measurement,
+0,14416,battery,4.08
+0,14416,charging,1
+0,15317,measurement,
+0,15317,battery,4.08
+0,15317,charging,0
+0,16218,measurement,
+0,16218,battery,4.08
+0,16218,charging,1
+0,17119,measurement,
+0,17119,battery,4.07
+0,17119,charging,1
+0,18020,measurement,
+0,18020,battery,4.07
+0,18020,charging,1
+0,18921,measurement,
+0,18921,battery,4.07
+0,18921,charging,1
+0,19822,measurement,
+0,19822,battery,4.07
+0,19822,charging,1
+0,20723,measurement,
+0,20723,battery,4.07
+0,20723,charging,1
+0,21624,measurement,
+0,21624,battery,4.07
+0,21624,charging,1
+0,22525,measurement,
+0,22525,battery,4.06
+0,22525,charging,1
+0,23426,measurement,
+0,23426,battery,4.06
+0,23426,charging,0
+0,24327,measurement,
+0,24327,battery,4.06
+0,24327,charging,0
+0,25228,measurement,
+0,25228,battery,4.06
+0,25228,charging,0
+0,26129,measurement,
+0,26129,battery,4.06
+0,26129,charging,0
+0,27030,measurement,
+0,27030,battery,4.06
+0,27030,charging,0
+0,27931,measurement,
+0,27931,battery,4.05
+0,27931,charging,0
+0,28832,measurement,
+0,28832,battery,4.05
+0,28832,charging,0
+0,29733,measurement,
+0,29733,battery,4.05
+0,29733,charging,0
+0,30634,measurement,
+0,30634,battery,4.05
+0,30634,charging,0
+0,31535,measurement,
+0,31535,battery,4.05
+0,31535,charging,0
+0,32436,measurement,
+0,32436,battery,4.05
+0,32436,charging,0
+0,33337,measurement,
+0,33337,battery,4.05
+0,33337,charging,0
+0,34238,measurement,
+0,34238,battery,4.04
+0,34238,charging,0
+0,35139,measurement,
+0,35139,battery,4.05
+0,35139,charging,0
+0,36040,measurement,
+0,36040,battery,4.05
+0,36040,charging,0
+0,36941,measurement,
+0,36941,battery,4.04
+0,36941,charging,0
+0,37842,measurement,
+0,37842,battery,4.04
+0,37842,charging,0
+0,38743,measurement,
+0,38743,battery,4.04
+0,38743,charging,0
+0,39644,measurement,
+0,39644,battery,4.04
+0,39644,charging,0
+0,40545,measurement,
+0,40545,battery,4.04
+0,40545,charging,0
+0,41446,measurement,
+0,41446,battery,4.04
+0,41446,charging,0
+0,42347,measurement,
+0,42347,battery,4.04
+0,42347,charging,0
+0,43248,measurement,
+0,43248,battery,4.04
+0,43248,charging,0
+0,44149,measurement,
+0,44149,battery,4.04
+0,44149,charging,0
+0,45050,measurement,
+0,45050,battery,4.04
+0,45050,charging,0
+0,45951,measurement,
+0,45951,battery,4.04
+0,45951,charging,0
+0,46852,measurement,
+0,46852,battery,4.04
+0,46852,charging,0
+0,47753,measurement,
+0,47753,battery,4.04
+0,47753,charging,0
+0,48654,measurement,
+0,48654,battery,4.04
+0,48654,charging,0
+0,49555,measurement,
+0,49555,battery,4.04
+0,49555,charging,0
+0,50456,measurement,
+0,50456,battery,4.04
+0,50456,charging,0
+0,51357,measurement,
+0,51357,battery,4.04
+0,51357,charging,0
+0,52258,measurement,
+0,52258,battery,4.03
+0,52258,charging,0
+0,53159,measurement,
+0,53159,battery,4.04
+0,53159,charging,0
+0,54060,measurement,
+0,54060,battery,4.03
+0,54060,charging,0
+0,54961,measurement,
+0,54961,battery,4.03
+0,54961,charging,0
+0,55862,measurement,
+0,55862,battery,4.03
+0,55862,charging,0
+0,56763,measurement,
+0,56763,battery,4.03
+0,56763,charging,0
+0,57664,measurement,
+0,57664,battery,4.03
+0,57664,charging,0
+0,58565,measurement,
+0,58565,battery,4.03
+0,58565,charging,0
+0,59466,measurement,
+0,59466,battery,4.03
+0,59466,charging,0
+0,60367,measurement,
+0,60367,battery,4.03
+0,60367,charging,0
+0,61268,measurement,
+0,61268,battery,4.03
+0,61268,charging,0
+0,62169,measurement,
+0,62169,battery,4.03
+0,62169,charging,0
+0,63070,measurement,
+0,63070,battery,4.03
+0,63070,charging,0
+0,63971,measurement,
+0,63971,battery,4.03
+0,63971,charging,0
+0,64872,measurement,
+0,64872,battery,4.03
+0,64872,charging,0
+0,65773,measurement,
+0,65773,battery,4.03
+0,65773,charging,0
+0,66674,measurement,
+0,66674,battery,4.02
+0,66674,charging,0
+0,67575,measurement,
+0,67575,battery,4.03
+0,67575,charging,1
+0,68476,measurement,
+0,68476,battery,4.02
+0,68476,charging,1
+0,69377,measurement,
+0,69377,battery,4.02
+0,69377,charging,1
+0,70278,measurement,
+0,70278,battery,4.03
+0,70278,charging,1
+0,71179,measurement,
+0,71179,battery,4.02
+0,71179,charging,1
+0,72080,measurement,
+0,72080,battery,4.02
+0,72080,charging,1
+0,72981,measurement,
+0,72981,battery,4.02
+0,72981,charging,1
+0,73882,measurement,
+0,73882,battery,4.03
+0,73882,charging,1
+0,74783,measurement,
+0,74783,battery,4.03
+0,74783,charging,1
+0,75684,measurement,
+0,75684,battery,4.02
+0,75684,charging,1
+0,76585,measurement,
+0,76585,battery,4.02
+0,76585,charging,1
+0,77486,measurement,
+0,77486,battery,4.02
+0,77486,charging,1
+0,78387,measurement,
+0,78387,battery,4.03
+0,78387,charging,1
+0,79288,measurement,
+0,79288,battery,4.03
+0,79288,charging,0
+0,80189,measurement,
+0,80189,battery,4.03
+0,80189,charging,1
+0,81090,measurement,
+0,81090,battery,4.03
+0,81090,charging,1
+0,81991,measurement,
+0,81991,battery,4.03
+0,81991,charging,1
+0,82892,measurement,
+0,82892,battery,4.03
+0,82892,charging,1
+0,83793,measurement,
+0,83793,battery,4.03
+0,83793,charging,1
+0,84694,measurement,
+0,84694,battery,4.03
+0,84694,charging,1
+0,85595,measurement,
+0,85595,battery,4.03
+0,85595,charging,1
+1,0,measurement,
+1,0,battery,4.03
+1,0,charging,1
+1,901,measurement,
+1,901,battery,4.03
+1,901,charging,1
+1,1802,measurement,
+1,1802,battery,4.03
+1,1802,charging,1
+1,2703,measurement,
+1,2703,battery,4.03
+1,2703,charging,1
+1,3604,measurement,
+1,3604,battery,4.03
+1,3604,charging,1
+1,4505,measurement,
+1,4505,battery,4.03
+1,4505,charging,1
+1,5406,measurement,
+1,5406,battery,4.03
+1,5406,charging,1
+1,6307,measurement,
+1,6307,battery,4.03
+1,6307,charging,1
+1,7208,measurement,
+1,7208,battery,4.03
+1,7208,charging,1
+1,8109,measurement,
+1,8109,battery,4.03
+1,8109,charging,1
+1,9010,measurement,
+1,9010,battery,4.02
+1,9010,charging,1
+1,9911,measurement,
+1,9911,battery,4.02
+1,9911,charging,1
+1,10812,measurement,
+1,10812,battery,4.02
+1,10812,charging,1
+1,11713,measurement,
+1,11713,battery,4.02
+1,11713,charging,1
+1,12614,measurement,
+1,12614,battery,4.02
+1,12614,charging,1
+1,13515,measurement,
+1,13515,battery,4.02
+1,13515,charging,1
+1,14416,measurement,
+1,14416,battery,4.01
+1,14416,charging,1
+1,15317,measurement,
+1,15317,battery,4.01
+1,15317,charging,1
+1,16218,measurement,
+1,16218,battery,4.01
+1,16218,charging,1
+1,17119,measurement,
+1,17119,battery,4.01
+1,17119,charging,1
+1,18020,measurement,
+1,18020,battery,4.01
+1,18020,charging,1
+1,18921,measurement,
+1,18921,battery,4.00
+1,18921,charging,0
+1,19822,measurement,
+1,19822,battery,4.00
+1,19822,charging,1
+1,20723,measurement,
+1,20723,battery,4.00
+1,20723,charging,0
+1,21624,measurement,
+1,21624,battery,4.00
+1,21624,charging,0
+1,22525,measurement,
+1,22525,battery,4.00
+1,22525,charging,0
+1,23426,measurement,
+1,23426,battery,4.00
+1,23426,charging,0
+1,24327,measurement,
+1,24327,battery,3.99
+1,24327,charging,0
+1,25228,measurement,
+1,25228,battery,3.99
+1,25228,charging,0
+1,26129,measurement,
+1,26129,battery,3.99
+1,26129,charging,0
+1,27030,measurement,
+1,27030,battery,3.99
+1,27030,charging,0
+1,27931,measurement,
+1,27931,battery,3.99
+1,27931,charging,0
+1,28832,measurement,
+1,28832,battery,3.98
+1,28832,charging,0
+1,29733,measurement,
+1,29733,battery,3.98
+1,29733,charging,0
+1,30634,measurement,
+1,30634,battery,3.98
+1,30634,charging,0
+1,31535,measurement,
+1,31535,battery,3.98
+1,31535,charging,0
+1,32436,measurement,
+1,32436,battery,3.98
+1,32436,charging,0
+1,33337,measurement,
+1,33337,battery,3.98
+1,33337,charging,0
+1,34238,measurement,
+1,34238,battery,3.97
+1,34238,charging,0
+1,35139,measurement,
+1,35139,battery,3.97
+1,35139,charging,0
+1,36040,measurement,
+1,36040,battery,3.97
+1,36040,charging,0
+1,36941,measurement,
+1,36941,battery,3.97
+1,36941,charging,0
+1,37842,measurement,
+1,37842,battery,3.97
+1,37842,charging,0
+1,38743,measurement,
+1,38743,battery,3.96
+1,38743,charging,0
+1,39644,measurement,
+1,39644,battery,3.96
+1,39644,charging,0
+1,40545,measurement,
+1,40545,battery,3.96
+1,40545,charging,0
+1,41446,measurement,
+1,41446,battery,3.96
+1,41446,charging,0
+1,42347,measurement,
+1,42347,battery,3.96
+1,42347,charging,0
+1,43248,measurement,
+1,43248,battery,3.95
+1,43248,charging,0
+1,44149,measurement,
+1,44149,battery,3.95
+1,44149,charging,0
+1,45050,measurement,
+1,45050,battery,3.95
+1,45050,charging,0
+1,45951,measurement,
+1,45951,battery,3.95
+1,45951,charging,0
+1,46852,measurement,
+1,46852,battery,3.95
+1,46852,charging,0
+1,47753,measurement,
+1,47753,battery,3.95
+1,47753,charging,0
+1,48654,measurement,
+1,48654,battery,3.94
+1,48654,charging,0
+1,49555,measurement,
+1,49555,battery,3.94
+1,49555,charging,0
+1,50456,measurement,
+1,50456,battery,3.94
+1,50456,charging,0
+1,51357,measurement,
+1,51357,battery,3.94
+1,51357,charging,0
+1,52258,measurement,
+1,52258,battery,3.94
+1,52258,charging,0
+1,53159,measurement,
+1,53159,battery,3.93
+1,53159,charging,0
+1,54060,measurement,
+1,54060,battery,3.93
+1,54060,charging,0
+1,54961,measurement,
+1,54961,battery,3.93
+1,54961,charging,0
+1,55862,measurement,
+1,55862,battery,3.93
+1,55862,charging,0
+1,56763,measurement,
+1,56763,battery,3.92
+1,56763,charging,0
+1,57664,measurement,
+1,57664,battery,3.93
+1,57664,charging,0
+1,58565,measurement,
+1,58565,battery,3.92
+1,58565,charging,0
+1,59466,measurement,
+1,59466,battery,3.92
+1,59466,charging,0
+1,60367,measurement,
+1,60367,battery,3.92
+1,60367,charging,0
+1,61268,measurement,
+1,61268,battery,3.92
+1,61268,charging,0
+1,62169,measurement,
+1,62169,battery,3.92
+1,62169,charging,0
+1,63070,measurement,
+1,63070,battery,3.92
+1,63070,charging,0
+1,63971,measurement,
+1,63971,battery,3.91
+1,63971,charging,0
+1,64872,measurement,
+1,64872,battery,3.91
+1,64872,charging,0
+1,65773,measurement,
+1,65773,battery,3.91
+1,65773,charging,0
+1,66674,measurement,
+1,66674,battery,3.91
+1,66674,charging,1
+1,67575,measurement,
+1,67575,battery,3.91
+1,67575,charging,1
+1,68476,measurement,
+1,68476,battery,3.91
+1,68476,charging,1
+1,69377,measurement,
+1,69377,battery,3.90
+1,69377,charging,1
+1,70278,measurement,
+1,70278,battery,3.91
+1,70278,charging,1
+1,71179,measurement,
+1,71179,battery,3.91
+1,71179,charging,1
+1,72080,measurement,
+1,72080,battery,3.91
+1,72080,charging,1
+1,72981,measurement,
+1,72981,battery,3.91
+1,72981,charging,1
+1,73882,measurement,
+1,73882,battery,3.91
+1,73882,charging,1
+1,74783,measurement,
+1,74783,battery,3.91
+1,74783,charging,1
+1,75684,measurement,
+1,75684,battery,3.91
+1,75684,charging,1
+1,76585,measurement,
+1,76585,battery,3.91
+1,76585,charging,1
+1,77486,measurement,
+1,77486,battery,3.91
+1,77486,charging,1
+1,78387,measurement,
+1,78387,battery,3.91
+1,78387,charging,1
+1,79288,measurement,
+1,79288,battery,3.91
+1,79288,charging,1
+1,80189,measurement,
+1,80189,battery,3.91
+1,80189,charging,0
+1,81090,measurement,
+1,81090,battery,3.91
+1,81090,charging,1
+1,81991,measurement,
+1,81991,battery,3.91
+1,81991,charging,0
+1,82892,measurement,
+1,82892,battery,3.91
+1,82892,charging,1
+1,83793,measurement,
+1,83793,battery,3.91
+1,83793,charging,1
+1,84694,measurement,
+1,84694,battery,3.91
+1,84694,charging,1
+1,85595,measurement,
+1,85595,battery,3.92
+1,85595,charging,1
+2,0,measurement,
+2,0,battery,3.92
+2,0,charging,1
+2,901,measurement,
+2,901,battery,3.92
+2,901,charging,1
+2,1802,measurement,
+2,1802,battery,3.91
+2,1802,charging,1
+2,2703,measurement,
+2,2703,battery,3.92
+2,2703,charging,1
+2,3604,measurement,
+2,3604,battery,3.91
+2,3604,charging,1
+2,4505,measurement,
+2,4505,battery,3.92
+2,4505,charging,1
+2,5406,measurement,
+2,5406,battery,3.92
+2,5406,charging,1
+2,6307,measurement,
+2,6307,battery,3.91
+2,6307,charging,1
+2,7208,measurement,
+2,7208,battery,3.92
+2,7208,charging,1
+2,8109,measurement,
+2,8109,battery,3.91
+2,8109,charging,1
+2,9010,measurement,
+2,9010,battery,3.91
+2,9010,charging,1
+2,9911,measurement,
+2,9911,battery,3.90
+2,9911,charging,1
+2,10812,measurement,
+2,10812,battery,3.90
+2,10812,charging,1
+2,11713,measurement,
+2,11713,battery,3.90
+2,11713,charging,1
+2,12614,measurement,
+2,12614,battery,3.90
+2,12614,charging,0
+2,13515,measurement,
+2,13515,battery,3.89
+2,13515,charging,1
+2,14416,measurement,
+2,14416,battery,3.89
+2,14416,charging,1
+2,15317,measurement,
+2,15317,battery,3.89
+2,15317,charging,1
+2,16218,measurement,
+2,16218,battery,3.89
+2,16218,charging,1
+2,17119,measurement,
+2,17119,battery,3.89
+2,17119,charging,1
+2,18020,measurement,
+2,18020,battery,3.89
+2,18020,charging,1
+2,18921,measurement,
+2,18921,battery,3.89
+2,18921,charging,1
+2,19822,measurement,
+2,19822,battery,3.88
+2,19822,charging,1
+2,20723,measurement,
+2,20723,battery,3.88
+2,20723,charging,1
+2,21624,measurement,
+2,21624,battery,3.88
+2,21624,charging,0
+2,22525,measurement,
+2,22525,battery,3.88
+2,22525,charging,1
+2,23426,measurement,
+2,23426,battery,3.88
+2,23426,charging,0
+2,24327,measurement,
+2,24327,battery,3.88
+2,24327,charging,0
+2,25228,measurement,
+2,25228,battery,3.87
+2,25228,charging,0
+2,26129,measurement,
+2,26129,battery,3.87
+2,26129,charging,0
+2,27030,measurement,
+2,27030,battery,3.87
+2,27030,charging,0
+2,27931,measurement,
+2,27931,battery,3.87
+2,27931,charging,0
+2,28832,measurement,
+2,28832,battery,3.87
+2,28832,charging,0
+2,29733,measurement,
+2,29733,battery,3.87
+2,29733,charging,0
+2,30634,measurement,
+2,30634,battery,3.87
+2,30634,charging,0
+2,31535,measurement,
+2,31535,battery,3.86
+2,31535,charging,0
+2,32436,measurement,
+2,32436,battery,3.86
+2,32436,charging,0
+2,33337,measurement,
+2,33337,battery,3.86
+2,33337,charging,0
+2,34238,measurement,
+2,34238,battery,3.86
+2,34238,charging,0
+2,35139,measurement,
+2,35139,battery,3.86
+2,35139,charging,0
+2,36040,measurement,
+2,36040,battery,3.86
+2,36040,charging,0
+2,36941,measurement,
+2,36941,battery,3.86
+2,36941,charging,0
+2,37842,measurement,
+2,37842,battery,3.86
+2,37842,charging,0
+2,38743,measurement,
+2,38743,battery,3.85
+2,38743,charging,0
+2,39644,measurement,
+2,39644,battery,3.85
+2,39644,charging,0
+2,40545,measurement,
+2,40545,battery,3.85
+2,40545,charging,0
+2,41446,measurement,
+2,41446,battery,3.85
+2,41446,charging,0
+2,42347,measurement,
+2,42347,battery,3.85
+2,42347,charging,0
+2,43248,measurement,
+2,43248,battery,3.85
+2,43248,charging,0
+2,44149,measurement,
+2,44149,battery,3.85
+2,44149,charging,0
+2,45050,measurement,
+2,45050,battery,3.85
+2,45050,charging,0
+2,45951,measurement,
+2,45951,battery,3.85
+2,45951,charging,0
+2,46852,measurement,
+2,46852,battery,3.85
+2,46852,charging,0
+2,47753,measurement,
+2,47753,battery,3.85
+2,47753,charging,0
+2,48654,measurement,
+2,48654,battery,3.84
+2,48654,charging,0
+2,49555,measurement,
+2,49555,battery,3.84
+2,49555,charging,0
+2,50456,measurement,
+2,50456,battery,3.84
+2,50456,charging,0
+2,51357,measurement,
+2,51357,battery,3.84
+2,51357,charging,0
+2,52258,measurement,
+2,52258,battery,3.84
+2,52258,charging,0
+2,53159,measurement,
+2,53159,battery,3.84
+2,53159,charging,0
+2,54060,measurement,
+2,54060,battery,3.84
+2,54060,charging,0
+2,54961,measurement,
+2,54961,battery,3.84
+2,54961,charging,0
+2,55862,measurement,
+2,55862,battery,3.83
+2,55862,charging,0
+2,56763,measurement,
+2,56763,battery,3.83
+2,56763,charging,0
+2,57664,measurement,
+2,57664,battery,3.83
+2,57664,charging,0
+2,58565,measurement,
+2,58565,battery,3.83
+2,58565,charging,0
+2,59466,measurement,
+2,59466,battery,3.83
+2,59466,charging,0
+2,60367,measurement,
+2,60367,battery,3.83
+2,60367,charging,0
+2,61268,measurement,
+2,61268,battery,3.82
+2,61268,charging,0
+2,62169,measurement,
+2,62169,battery,3.82
+2,62169,charging,0
+2,63070,measurement,
+2,63070,battery,3.83
+2,63070,charging,0
+2,63971,measurement,
+2,63971,battery,3.83
+2,63971,charging,0
+2,64872,measurement,
+2,64872,battery,3.82
+2,64872,charging,0
+2,65773,measurement,
+2,65773,battery,3.82
+2,65773,charging,0
+2,66674,measurement,
+2,66674,battery,3.82
+2,66674,charging,1
+2,67575,measurement,
+2,67575,battery,3.82
+2,67575,charging,1
+2,68476,measurement,
+2,68476,battery,3.82
+2,68476,charging,1
+2,69377,measurement,
+2,69377,battery,3.82
+2,69377,charging,1
+2,70278,measurement,
+2,70278,battery,3.82
+2,70278,charging,1
+2,71179,measurement,
+2,71179,battery,3.82
+2,71179,charging,1
+2,72080,measurement,
+2,72080,battery,3.82
+2,72080,charging,1
+2,72981,measurement,
+2,72981,battery,3.82
+2,72981,charging,1
+2,73882,measurement,
+2,73882,battery,3.82
+2,73882,charging,1
+2,74783,measurement,
+2,74783,battery,3.82
+2,74783,charging,1
+2,75684,measurement,
+2,75684,battery,3.82
+2,75684,charging,1
+2,76585,measurement,
+2,76585,battery,3.82
+2,76585,charging,0
+2,77486,measurement,
+2,77486,battery,3.82
+2,77486,charging,1
+2,78387,measurement,
+2,78387,battery,3.82
+2,78387,charging,0
+2,79288,measurement,
+2,79288,battery,3.83
+2,79288,charging,1
+2,80189,measurement,
+2,80189,battery,3.83
+2,80189,charging,1
+2,81090,measurement,
+2,81090,battery,3.83
+2,81090,charging,1
+2,81991,measurement,
+2,81991,battery,3.83
+2,81991,charging,1
+2,82892,measurement,
+2,82892,battery,3.83
+2,82892,charging,1
+2,83793,measurement,
+2,83793,battery,3.83
+2,83793,charging,1
+2,84694,measurement,
+2,84694,battery,3.83
+2,84694,charging,1
+2,85595,measurement,
+2,85595,battery,3.83
+2,85595,charging,1
+3,0,measurement,
+3,0,battery,3.84
+3,0,charging,1
+3,901,measurement,
+3,901,battery,3.84
+3,901,charging,1
+3,1802,measurement,
+3,1802,battery,3.84
+3,1802,charging,1
+3,2703,measurement,
+3,2703,battery,3.84
+3,2703,charging,1
+3,3604,measurement,
+3,3604,battery,3.84
+3,3604,charging,1
+3,4505,measurement,
+3,4505,battery,3.84
+3,4505,charging,1
+3,5406,measurement,
+3,5406,battery,3.84
+3,5406,charging,1
+3,6307,measurement,
+3,6307,battery,3.84
+3,6307,charging,1
+3,7208,measurement,
+3,7208,battery,3.84
+3,7208,charging,1
+3,8109,measurement,
+3,8109,battery,3.83
+3,8109,charging,1
+3,9010,measurement,
+3,9010,battery,3.83
+3,9010,charging,1
+3,9911,measurement,
+3,9911,battery,3.83
+3,9911,charging,1
+3,10812,measurement,
+3,10812,battery,3.82
+3,10812,charging,0
+3,11713,measurement,
+3,11713,battery,3.82
+3,11713,charging,1
+3,12614,measurement,
+3,12614,battery,3.82
+3,12614,charging,1
+3,13515,measurement,
+3,13515,battery,3.82
+3,13515,charging,1
+3,14416,measurement,
+3,14416,battery,3.82
+3,14416,charging,1
+3,15317,measurement,
+3,15317,battery,3.82
+3,15317,charging,1
+3,16218,measurement,
+3,16218,battery,3.81
+3,16218,charging,1
+3,17119,measurement,
+3,17119,battery,3.81
+3,17119,charging,1
+3,18020,measurement,
+3,18020,battery,3.81
+3,18020,charging,1
+3,18921,measurement,
+3,18921,battery,3.81
+3,18921,charging,1
+3,19822,measurement,
+3,19822,battery,3.81
+3,19822,charging,1
+3,20723,measurement,
+3,20723,battery,3.81
+3,20723,charging,1
+3,21624,measurement,
+3,21624,battery,3.81
+3,21624,charging,1
+3,22525,measurement,
+3,22525,battery,3.81
+3,22525,charging,1
+3,23426,measurement,
+3,23426,battery,3.81
+3,23426,charging,0
+3,24327,measurement,
+3,24327,battery,3.81
+3,24327,charging,0
+3,25228,measurement,
+3,25228,battery,3.82
+3,25228,charging,0
+3,26129,measurement,
+3,26129,battery,3.82
+3,26129,charging,0
+3,27030,measurement,
+3,27030,battery,3.81
+3,27030,charging,0
+3,27931,measurement,
+3,27931,battery,3.81
+3,27931,charging,0
+3,28832,measurement,
+3,28832,battery,3.82
+3,28832,charging,0
+3,29733,measurement,
+3,29733,battery,3.81
+3,29733,charging,0
+3,30634,measurement,
+3,30634,battery,3.81
+3,30634,charging,0
+3,31535,measurement,
+3,31535,battery,3.82
+3,31535,charging,0
+3,32436,measurement,
+3,32436,battery,3.81
+3,32436,charging,0
+3,33337,measurement,
+3,33337,battery,3.81
+3,33337,charging,0
+3,34238,measurement,
+3,34238,battery,3.81
+3,34238,charging,0
+3,35139,measurement,
+3,35139,battery,3.81
+3,35139,charging,0
+3,36040,measurement,
+3,36040,battery,3.81
+3,36040,charging,0
+3,36941,measurement,
+3,36941,battery,3.81
+3,36941,charging,0
+3,37842,measurement,
+3,37842,battery,3.81
+3,37842,charging,0
+3,38743,measurement,
+3,38743,battery,3.81
+3,38743,charging,0
+3,39644,measurement,
+3,39644,battery,3.82
+3,39644,charging,0
+3,40545,measurement,
+3,40545,battery,3.81
+3,40545,charging,0
+3,41446,measurement,
+3,41446,battery,3.81
+3,41446,charging,0
+3,42347,measurement,
+3,42347,battery,3.81
+3,42347,charging,0
+3,43248,measurement,
+3,43248,battery,3.81
+3,43248,charging,0
+3,44149,measurement,
+3,44149,battery,3.81
+3,44149,charging,0
+3,45050,measurement,
+3,45050,battery,3.81
+3,45050,charging,0
+3,45951,measurement,
+3,45951,battery,3.81
+3,45951,charging,0
+3,46852,measurement,
+3,46852,battery,3.82
+3,46852,charging,0
+3,47753,measurement,
+3,47753,battery,3.81
+3,47753,charging,0
+3,48654,measurement,
+3,48654,battery,3.81
+3,48654,charging,0
+3,49555,measurement,
+3,49555,battery,3.81
+3,49555,charging,0
+3,50456,measurement,
+3,50456,battery,3.81
+3,50456,charging,0
+3,51357,measurement,
+3,51357,battery,3.81
+3,51357,charging,0
+3,52258,measurement,
+3,52258,battery,3.81
+3,52258,charging,0
+3,53159,measurement,
+3,53159,battery,3.81
+3,53159,charging,0
+3,54060,measurement,
+3,54060,battery,3.82
+3,54060,charging,0
+3,54961,measurement,
+3,54961,battery,3.81
+3,54961,charging,0
+3,55862,measurement,
+3,55862,battery,3.80
+3,55862,charging,0
+3,56763,measurement,
+3,56763,battery,3.81
+3,56763,charging,0
+3,57664,measurement,
+3,57664,battery,3.81
+3,57664,charging,0
+3,58565,measurement,
+3,58565,battery,3.81
+3,58565,charging,0
+3,59466,measurement,
+3,59466,battery,3.81
+3,59466,charging,0
+3,60367,measurement,
+3,60367,battery,3.81
+3,60367,charging,0
+3,61268,measurement,
+3,61268,battery,3.80
+3,61268,charging,0
+3,62169,measurement,
+3,62169,battery,3.82
+3,62169,charging,0
+3,63070,measurement,
+3,63070,battery,3.81
+3,63070,charging,0
+3,63971,measurement,
+3,63971,battery,3.81
+3,63971,charging,0
+3,64872,measurement,
+3,64872,battery,3.80
+3,64872,charging,0
+3,65773,measurement,
+3,65773,battery,3.81
+3,65773,charging,1
+3,66674,measurement,
+3,66674,battery,3.81
+3,66674,charging,1
+3,67575,measurement,
+3,67575,battery,3.80
+3,67575,charging,1
+3,68476,measurement,
+3,68476,battery,3.82
+3,68476,charging,1
+3,69377,measurement,
+3,69377,battery,3.80
+3,69377,charging,1
+3,70278,measurement,
+3,70278,battery,3.80
+3,70278,charging,1
+3,71179,measurement,
+3,71179,battery,3.80
+3,71179,charging,1
+3,72080,measurement,
+3,72080,battery,3.81
+3,72080,charging,1
+3,72981,measurement,
+3,72981,battery,3.81
+3,72981,charging,1
+3,73882,measurement,
+3,73882,battery,3.80
+3,73882,charging,1
+3,74783,measurement,
+3,74783,battery,3.80
+3,74783,charging,1
+3,75684,measurement,
+3,75684,battery,3.80
+3,75684,charging,1
+3,76585,measurement,
+3,76585,battery,3.80
+3,76585,charging,1
+3,77486,measurement,
+3,77486,battery,3.80
+3,77486,charging,1
+3,78387,measurement,
+3,78387,battery,3.82
+3,78387,charging,1
+3,79288,measurement,
+3,79288,battery,3.80
+3,79288,charging,1
+3,80189,measurement,
+3,80189,battery,3.81
+3,80189,charging,1
+3,81090,measurement,
+3,81090,battery,3.80
+3,81090,charging,1
+3,81991,measurement,
+3,81991,battery,3.71
+3,81991,charging,1
+3,82892,measurement,
+3,82892,battery,3.71
+3,82892,charging,1
+3,83793,measurement,
+3,83793,battery,3.71
+3,83793,charging,1
+3,84694,measurement,
+3,84694,battery,3.72
+3,84694,charging,1
+3,85595,measurement,
+3,85595,battery,3.72
+3,85595,charging,1
+4,0,measurement,
+4,0,battery,3.81
+4,0,charging,1
+4,901,measurement,
+4,901,battery,3.72
+4,901,charging,1
+4,1802,measurement,
+4,1802,battery,3.72
+4,1802,charging,1
+4,2703,measurement,
+4,2703,battery,3.79
+4,2703,charging,1
+4,3604,measurement,
+4,3604,battery,3.73
+4,3604,charging,1
+4,4505,measurement,
+4,4505,battery,3.73
+4,4505,charging,1
+4,5406,measurement,
+4,5406,battery,3.73
+4,5406,charging,1
+4,6307,measurement,
+4,6307,battery,3.80
+4,6307,charging,1
+4,7208,measurement,
+4,7208,battery,3.80
+4,7208,charging,1
+4,8109,measurement,
+4,8109,battery,3.81
+4,8109,charging,1
+4,9010,measurement,
+4,9010,battery,3.81
+4,9010,charging,1
+4,9911,measurement,
+4,9911,battery,3.80
+4,9911,charging,1
+4,10812,measurement,
+4,10812,battery,3.80
+4,10812,charging,1
+4,11713,measurement,
+4,11713,battery,3.80
+4,11713,charging,1
+4,12614,measurement,
+4,12614,battery,3.81
+4,12614,charging,1
+4,13515,measurement,
+4,13515,battery,3.80
+4,13515,charging,1
+4,14416,measurement,
+4,14416,battery,3.80
+4,14416,charging,1
+4,15317,measurement,
+4,15317,battery,3.80
+4,15317,charging,1
+4,16218,measurement,
+4,16218,battery,3.80
+4,16218,charging,1
+4,17119,measurement,
+4,17119,battery,3.80
+4,17119,charging,1
+4,18020,measurement,
+4,18020,battery,3.80
+4,18020,charging,1
+4,18921,measurement,
+4,18921,battery,3.80
+4,18921,charging,1
+4,19822,measurement,
+4,19822,battery,3.80
+4,19822,charging,1
+4,20723,measurement,
+4,20723,battery,3.81
+4,20723,charging,1
+4,21624,measurement,
+4,21624,battery,3.80
+4,21624,charging,1
+4,22525,measurement,
+4,22525,battery,3.81
+4,22525,charging,1
+4,23426,measurement,
+4,23426,battery,3.80
+4,23426,charging,0
+4,24327,measurement,
+4,24327,battery,3.80
+4,24327,charging,0
+4,25228,measurement,
+4,25228,battery,3.80
+4,25228,charging,0
+4,26129,measurement,
+4,26129,battery,3.81
+4,26129,charging,0
+4,27030,measurement,
+4,27030,battery,3.80
+4,27030,charging,0
+4,27931,measurement,
+4,27931,battery,3.81
+4,27931,charging,0
+4,28832,measurement,
+4,28832,battery,3.80
+4,28832,charging,0
+4,29733,measurement,
+4,29733,battery,3.81
+4,29733,charging,0
+4,30634,measurement,
+4,30634,battery,3.81
+4,30634,charging,0
+4,31535,measurement,
+4,31535,battery,3.81
+4,31535,charging,0
+4,32436,measurement,
+4,32436,battery,3.80
+4,32436,charging,0
+4,33337,measurement,
+4,33337,battery,3.80
+4,33337,charging,0
+4,34238,measurement,
+4,34238,battery,3.80
+4,34238,charging,0
+4,35139,measurement,
+4,35139,battery,3.80
+4,35139,charging,0
+4,36040,measurement,
+4,36040,battery,3.80
+4,36040,charging,0
+4,36941,measurement,
+4,36941,battery,3.80
+4,36941,charging,0
+4,37842,measurement,
+4,37842,battery,3.80
+4,37842,charging,0
+4,38743,measurement,
+4,38743,battery,3.80
+4,38743,charging,0
+4,39644,measurement,
+4,39644,battery,3.80
+4,39644,charging,0
+4,40545,measurement,
+4,40545,battery,3.80
+4,40545,charging,0
+4,41446,measurement,
+4,41446,battery,3.80
+4,41446,charging,0
+4,42347,measurement,
+4,42347,battery,3.80
+4,42347,charging,0
+4,43248,measurement,
+4,43248,battery,3.80
+4,43248,charging,0
+4,44149,measurement,
+4,44149,battery,3.80
+4,44149,charging,0
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.81
+0,901,measurement,
+0,901,battery,3.80
+0,901,charging,1
+0,1802,measurement,
+0,1802,battery,3.81
+0,1802,charging,1
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.71
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.78
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.71
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.76
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.71
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.77
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.76
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.75
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.67
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.72
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.79
+0,0,system on,
+0,0,battery,
+3.71
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.72
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.74
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.70
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.78
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.70
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.73
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.78
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.75
+0,0,system on,
+0,0,battery,
+3.72
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.78
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.66
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.74
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.73
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.73
+0,0,system on,
+0,0,battery,
+3.78
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.72
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.66
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.76
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.72
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.65
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.64
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.77
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.74
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.73
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.76
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.77
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.63
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.72
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.69
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.73
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.72
+0,0,system on,
+0,0,battery,
+3.69
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.65
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.77
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.74
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.70
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.73
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.72
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.78
+0,0,system on,
+0,0,battery,
+3.67
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.76
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.67
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.64
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.68
+0,0,system on,
+0,0,battery,
+3.76
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.79
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.74
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.71
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.77
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.71
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.75
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.68
+0,0,system on,
+0,0,battery,
+3.77
+0,0,system on,
+0,0,battery,
+3.70
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.73
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.64
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.64
+0,0,system on,
+0,0,battery,
+3.70
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.63
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.75
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.64
+0,0,system on,
+0,0,battery,
+3.64
+0,0,system on,
+0,0,battery,
+3.78
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.68
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.73
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.64
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.65
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.64
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.65
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.77
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.77
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.77
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.64
+0,0,system on,
+0,0,battery,
+3.64
+0,0,system on,
+0,0,battery,
+3.66
+0,0,system on,
+0,0,battery,
+3.66
+0,0,system on,
+0,0,battery,
+3.64
+0,0,system on,
+0,0,battery,
+3.64
+0,0,system on,
+0,0,battery,
+3.64
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.64
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.66
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.64
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.64
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.64
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.65
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.65
+0,0,system on,
+0,0,battery,
+3.68
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.73
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.74
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.71
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.65
+0,0,system on,
+0,0,battery,
+3.65
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.65
+0,0,system on,
+0,0,battery,
+3.65
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.65
+0,0,system on,
+0,0,battery,
+3.65
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.65
+0,0,system on,
+0,0,battery,
+3.65
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.65
+0,0,system on,
+0,0,battery,
+3.65
+0,0,system on,
+0,0,battery,
+3.65
+0,0,system on,
+0,0,battery,
+3.67
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.75
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.65
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.65
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.65
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.65
+0,0,system on,
+0,0,battery,
+3.66
+0,0,system on,
+0,0,battery,
+3.65
+0,0,system on,
+0,0,battery,
+3.70
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.65
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.65
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.65
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.65
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.64
+0,0,system on,
+0,0,battery,
+3.65
+0,0,system on,
+0,0,battery,
+3.65
+0,0,system on,
+0,0,battery,
+3.64
+0,0,system on,
+0,0,battery,
+3.65
+0,0,system on,
+0,0,battery,
+3.65
+0,0,system on,
+0,0,battery,
+3.71
+0,0,system on,
+0,0,battery,
+3.67
+0,0,system on,
+0,0,battery,
+3.65
+0,0,system on,
+0,0,battery,
+3.65
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.65
+0,0,system on,
+0,0,battery,
+3.65
+0,0,system on,
+0,0,battery,
+3.65
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.71
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.65
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.65
+0,0,system on,
+0,0,battery,
+3.71
+0,0,system on,
+0,0,battery,
+3.65
+0,0,system on,
+0,0,battery,
+3.65
+0,0,system on,
+0,0,battery,
+3.65
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.65
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.65
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.65
+0,0,system on,
+0,0,battery,
+3.65
+0,0,system on,
+0,0,battery,
+3.65
+0,0,system on,
+0,0,battery,
+3.65
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.64
+0,0,system on,
+0,0,battery,
+3.65
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.65
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.65
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.76
+0,0,system on,
+0,0,battery,
+3.76
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.69
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.65
+0,0,system on,
+0,0,battery,
+3.65
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.65
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.65
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.65
+0,0,system on,
+0,0,battery,
+3.70
+0,0,system on,
+0,0,battery,
+3.65
+0,0,system on,
+0,0,battery,
+3.75
+0,0,system on,
+0,0,battery,
+3.65
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.67
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.80
+0,0,system on,
+0,0,battery,
+3.81
+0,0,system on,
+0,0,battery,
+3.80

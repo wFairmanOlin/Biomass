@@ -1,3 +1,4 @@
+old/
 old_mechanical/
 current_mechanical/
 biomass_sd/
@@ -8,3 +9,4 @@ PCB_Design/
 *.vscode
 *.DS_store
 *.log
+*.ipynb_checkpoints
