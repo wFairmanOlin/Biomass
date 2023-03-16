@@ -27,4 +27,4 @@ This repository contains a set of data collected by our version 1 algae sensor f
 
 ## Prediction
 
-There is currently no code available for predicting algae density.
+The prediction code is located in the [prediction folder](/prediction/).
