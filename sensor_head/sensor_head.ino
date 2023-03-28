@@ -1,15 +1,18 @@
 #include <Wire.h>
+#include <avr/sleep.h>
 
 /*
- * Make Sure to Burn Bootloader before trying program a new board!
- */
-
+   Make Sure to Burn Bootloader before trying program a new board!
+*/
+#define I2C_ADDRESS 1
 #define LED A0
 #define DIODE A1
 #define LASER 4
 
 int state = 0;
-uint8_t data[4];
+int counter = 0;
+uint8_t data[10];
+
 
 void setup() {
   //set pinmodes
@@ -19,19 +22,60 @@ void setup() {
   digitalWrite(LED, HIGH);
 
   //setup i2c
-  Wire.begin(31);
+  Wire.begin(I2C_ADDRESS);
   Wire.onRequest(requestEvent);
   Wire.onReceive(receiveEvent);
-  delay(5000);
+  delay(1000);
   digitalWrite(LED, LOW);
 
 
 }
 
+
+/**
+ * State Machine
+ * 
+ * State 0 -> go to deep sleep
+ * State 1 -> sample ADC
+ * State 2 -> wait to send data
+ * 
+ */
+ 
 void loop() {
-  if (state == 1){
-    takeSample(10);
-    state = 2;
+  switch (state) {
+
+    case 1:
+      takeSample(100);
+      state = 2;
+      counter = 0;
+      break;
+
+    case 2:
+      if (counter > 100){
+        state = 0;
+      }
+      delay(100);
+      counter ++;
+      break;
+      
+    default:
+      if(counter > 10){
+        //go to sleep
+        set_sleep_mode (SLEEP_MODE_PWR_DOWN);
+        sleep_enable();
+        digitalWrite(LED, LOW);
+        sleep_cpu();
+        //wake up
+        digitalWrite(LED, HIGH);
+        sleep_disable();
+        counter = 0;
+        TWCR = bit(TWEN) | bit(TWIE) | bit(TWEA) | bit(TWINT);// release I2C
+        Wire.begin(I2C_ADDRESS);
+        counter = 0;
+      }
+      delay(100);
+      counter ++;
+      break;
   }
 }
 
@@ -42,36 +86,33 @@ void requestEvent() {
   }
 }
 
-void receiveEvent(int howMany){
-  if (howMany == 1){
+void receiveEvent(int howMany) {
+  if (howMany == 1) {
     int cmd = Wire.read();
     if (cmd == 2)
       state = 1;
   }
 }
 
-void takeSample(int samples){
+void takeSample(int samples) {
   uint32_t local_off = 0;
   uint32_t local_on = 0;
-  
-  digitalWrite(LASER, LOW); 
-  for(int i = 0; i < samples; i ++){
+
+  digitalWrite(LASER, LOW);
+  for (int i = 0; i < samples; i ++) {
     local_off += analogRead(DIODE);
   }
   digitalWrite(LASER, HIGH);
-  delay(100);
-  for(int i = 0; i < samples; i ++){
+  delay(500);
+  for (int i = 0; i < samples; i ++) {
     local_on += analogRead(DIODE);
   }
   digitalWrite(LASER, LOW);
   local_off /= samples;
   local_on /= samples;
 
-  local_off = 0;
-  local_on = 121;
-
-  data[0] = local_off >> 8;
-  data[1] = local_off;
-  data[3] = local_on >> 8;
-  data[4] = local_on;
+  data[0] = (local_off >> 8) & 0xFF;
+  data[1] = local_off & 0xFF;
+  data[2] = (local_on >> 8)  & 0xFF;
+  data[3] = local_on & 0xFF;
 }

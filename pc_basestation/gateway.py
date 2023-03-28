@@ -25,6 +25,7 @@ from datetime import datetime
 #
 # Let the computer establish a network connection on reboot
 folder = "Desktop/Biomass/pc_basestation/"
+# folder = "" #for testing
 #############################################
 
 
@@ -56,7 +57,7 @@ logging.info('Starting')
 # port = '/dev/cu.usbserial-2'
 # port = '/dev/cu.usbserial-0001'
 # port = '/dev/ttyACM0'
-port = '/dev/ttyUSB0'
+port = '/dev/ttyUSB0' #for RPI
 ser  = init_serial(port)
 
 ############### FIREBASE VARIABLES ###############
@@ -111,8 +112,8 @@ while True:
                 # print(message_id + " " + message_time)
                 
                 if message_id == "status":
-                    if len(message) == 11:
-                        data = {message[3] : message[4], message[5] : message[6], message[7] : message[8], message[9] : message[10]}
+                    if len(message) == 9:
+                        data = {message[3] : message[4], message[5] : message[6], message[7] : message[8]}
                         try:
                             sensor_ref = ref.child(sensor_id + "/" + message_id)
                             sensor_ref.child(message_time).set(data)
@@ -121,27 +122,37 @@ while True:
                     else:
                         logger.warning("Status Message Length Mis-Match %s", message)
 
-                if message_id == "golay_a":
-                    prev_id = sensor_id
-                    prev_time = time.time()
-                    if len(message) == 35:
-                        golay["seq_a"] = message[3:]
+                if message_id == "data":
+                    if len(message) == 6:
+                        try:
+                            sensor_ref = ref.child(sensor_id + "/data")
+                            sensor_ref.child(message_time).set(message[3:])
+                        except:
+                            logger.exception("uploading data message failed")
                     else:
-                        logger.warning("Golay Message Length Mis-Match %s", message)
+                        logger.warning("Data Message Length Mis-Match %s", message)
+                    
+                # if message_id == "golay_a":
+                #     prev_id = sensor_id
+                #     prev_time = time.time()
+                #     if len(message) == 35:
+                #         golay["seq_a"] = message[3:]
+                #     else:
+                #         logger.warning("Golay Message Length Mis-Match %s", message)
                 
-                if message_id == "golay_b":
-                    if len(message) == 35:
-                        if (prev_id == sensor_id) and ( (time.time() - prev_time) < golay_timeout):
-                            golay["seq_b"] = message[3:]
-                            try:
-                                sensor_ref = ref.child(sensor_id + "/golay")
-                                sensor_ref.child(message_time).set(golay)
-                            except:
-                                logger.exception("uploading golay message failed")
-                        else:
-                            logger.warning("Golay Timeout or Interrupted by Another Sensor")
-                    else:
-                        logger.warning("Golay Message Length Mis-Match %s", message)
+                # if message_id == "golay_b":
+                #     if len(message) == 35:
+                #         if (prev_id == sensor_id) and ( (time.time() - prev_time) < golay_timeout):
+                #             golay["seq_b"] = message[3:]
+                #             try:
+                #                 sensor_ref = ref.child(sensor_id + "/golay")
+                #                 sensor_ref.child(message_time).set(golay)
+                #             except:
+                #                 logger.exception("uploading golay message failed")
+                #         else:
+                #             logger.warning("Golay Timeout or Interrupted by Another Sensor")
+                #     else:
+                #         logger.warning("Golay Message Length Mis-Match %s", message)
 ############### END MAIN LOOP ###############
 
 logger.warning("Exited While Loop")

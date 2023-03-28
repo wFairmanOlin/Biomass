@@ -92,13 +92,11 @@ void loop()
       //handle status messages
       if((buf[0] == 1)){
         //check length
-        if(len == 4){
+        if(len == 3){
           float battery_voltage = (buf[1] << 8 | buf[2]) * 6.6 / 1024;
-          int charging_status = buf[3];
           Serial.print("from "); Serial.print(from);
           Serial.print(" status");
           Serial.print(" batt_v "); Serial.print(battery_voltage);
-          Serial.print(" charging "); Serial.print(charging_status);
           Serial.print(" RSSI "); Serial.print(driver.lastRssi(), DEC);
           Serial.print(" freqError "); Serial.println(driver.frequencyError(), DEC);
         }
@@ -106,42 +104,27 @@ void loop()
           Serial.println("Status Message Mismatch!");
       }
 
-      //handle golay A messages
+      //handle data messages
       if(buf[0] == 2){
         //check length
-        if(buf[1] == (len - 2)){
-          Serial.print("from "); Serial.print(from);
-          Serial.print(" golay_a");
-          for(int i = 2; i < len; i += 2){
-            Serial.print(" ");
-            int val = ((buf[i] << 8) | buf[i+1]);
-            Serial.print(val);
+        if(len == 8){
+          //check stale data
+          if(buf[1] == 1){
+            Serial.print("from "); Serial.print(from);
+            Serial.print(" data");
+            for(int i = 2; i < len; i += 2){
+              Serial.print(" ");
+              int val = (buf[i] << 8) | buf[i + 1];
+              Serial.print(val);
+            }
+            Serial.println();
           }
-          Serial.println();
+          else
+            Serial.println("Sensor Data did not Update!");
         }
         else
-          Serial.println("Golay A Message Length Mismatch!");
+          Serial.println("Data Message Length Mismatch!");
       }
-      
-      //handle golay B messages
-      if(buf[0] == 3){
-        //check length
-        if(buf[1] == (len - 2)){
-          Serial.print("from "); Serial.print(from);
-          Serial.print(" golay_b");
-          for(int i = 2; i < len; i += 2){
-            Serial.print(" ");
-            int val = ((buf[i] << 8) | buf[i+1]);
-            Serial.print(val);
-          }
-          Serial.println();
-        }
-        else
-          Serial.println("Golay Message Length Mismatch!");
-      }
-      digitalWrite(LED, LOW);
     }
-    else
-      Serial.println("Receive failed");
   }
 }
