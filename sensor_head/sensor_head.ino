@@ -63,10 +63,10 @@ void loop() {
         //go to sleep
         set_sleep_mode (SLEEP_MODE_PWR_DOWN);
         sleep_enable();
-        digitalWrite(LED, LOW);
+//        digitalWrite(LED, LOW);
         sleep_cpu();
         //wake up
-        digitalWrite(LED, HIGH);
+//        digitalWrite(LED, HIGH);
         sleep_disable();
         counter = 0;
         TWCR = bit(TWEN) | bit(TWIE) | bit(TWEA) | bit(TWINT);// release I2C
@@ -99,15 +99,18 @@ void takeSample(int samples) {
   uint32_t local_on = 0;
 
   digitalWrite(LASER, LOW);
+  digitalWrite(LED, LOW);
   for (int i = 0; i < samples; i ++) {
     local_off += analogRead(DIODE);
   }
   digitalWrite(LASER, HIGH);
+  digitalWrite(LED, HIGH);
   delay(500);
   for (int i = 0; i < samples; i ++) {
     local_on += analogRead(DIODE);
   }
   digitalWrite(LASER, LOW);
+  digitalWrite(LED, LOW);
   local_off /= samples;
   local_on /= samples;
 

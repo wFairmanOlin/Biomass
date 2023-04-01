@@ -32,13 +32,13 @@
 //#define BATT_PIN 37
 
 #define SERVER_ADDRESS 1
-#define CLIENT_ADDRESS 1 //change this
+#define CLIENT_ADDRESS 5 //change this
 
 //Set Frequency
 #define RF95_FREQ 915.0
 
 //Schedule Updates in Minutes
-#define UPDATE_FREQ 1
+#define UPDATE_FREQ 10
 
 // Singleton instance of the radio driver
 RH_RF95 driver(RFM95_CS, RFM95_INT);
@@ -49,8 +49,14 @@ RHReliableDatagram manager(driver, CLIENT_ADDRESS);
 uint8_t test_charging = 0;
 
 /* Buffers */
+long ga[] = {1,1,1,-1,1,1,-1,1,1,1,1,-1,-1,-1,1,-1,1,1,1,-1,1,1,-1,1,-1,-1,-1,1,1,1,-1,1};
+long gb[] = {1,1,1,-1,1,1,-1,1,1,1,1,-1,-1,-1,1,-1,-1,-1,-1,1,-1,-1,1,-1,1,1,1,-1,-1,-1,1,-1};
+
 uint8_t status_message[3];
 uint8_t data_message[8];
+
+long golay_a_buffer[32];
+long golay_b_buffer[32];
 
 /* COUNTERS */
 unsigned long prev_update = 0;
@@ -83,13 +89,17 @@ void setup()
    */
   manager.setTimeout(5000);
 //  driver.setModemConfig(RH_RF95::Bw125Cr45Sf2048);
-  driver.setSpreadingFactor(10);
+  driver.setSpreadingFactor(12);
   driver.setSignalBandwidth(125000);
   driver.setFrequency(RF95_FREQ);
   driver.setTxPower(23, false);
   digitalWrite(LED, HIGH);
   delay(1000);
   digitalWrite(LED, LOW);
+  Serial.print("test ");
+  Serial.println(sizeof(golay_a_buffer));
+  delay(2000);
+  send_data();
 }
 
 //for receiving messages
@@ -112,7 +122,9 @@ void loop()
     digitalWrite(LED, LOW);
     
   }
-  
+  //for testing
+//  delay(8000);
+//  wdt_counter ++;
   /* end of loop handles putting uC to sleep*/
   wdt_counter ++;
   //configure watchdog timer to go off in 8 seconds
@@ -154,16 +166,13 @@ void send_status(){
  */
 void send_data(){
   data_message[0] = 2;
-  data_message[1] = get_data();
-  //place holder for golay calculations
-  data_message[6] = 44;
-  data_message[7] = 44;
+  data_message[1] = get_golay();
 
   //send data_message
   if (manager.sendtoWait(data_message, sizeof(data_message), SERVER_ADDRESS))
-    Serial.println("Status Message Acknowledged");
+    Serial.println("Data Message Acknowledged");
   else
-    Serial.println("Status Message Not Received");
+    Serial.println("Data Message Not Received");
   
 }
 
@@ -180,7 +189,7 @@ int get_data(){
   Wire.beginTransmission(1);
   Wire.write(2);
   Wire.endTransmission();
-  delay(2000);
+  delay(1000);
   Wire.requestFrom(1, 4);
   if(Wire.available() == 4){
     data_message[2] = Wire.read();
@@ -204,4 +213,55 @@ int read_battery(){
   float vbat_f = measured_vbat / 10 * 6.6 / 1024;
   Serial.println(vbat_f);
   return measured_vbat / 10;
+}
+
+/*
+ * Perform a golay calculation
+ */
+int get_golay(){
+  //fill golay_a sequence
+  long ga_mean = 0;
+  for (int i = 0; i < sizeof(ga) / 4; i ++){
+    //abort if get_data fails
+    if (get_data() == 0)
+      return 0;
+    //store data
+    if (ga[i] == 1){
+      golay_a_buffer[i] = (data_message[4] << 8) | (data_message[5]);
+    } else {
+      golay_a_buffer[i] = (data_message[2] << 8) | (data_message[3]);
+    }
+    ga_mean += golay_a_buffer[i];   
+  }
+  ga_mean /= 32;
+  
+  //fill golay_b sequence
+  long gb_mean = 0;
+  for (int i = 0; i < sizeof(gb) / 4; i ++){
+    //abort if get_data fails
+    if (get_data() == 0)
+      return 0;
+    //store data
+    if (gb[i] == 1){
+      golay_b_buffer[i] = (data_message[4] << 8) | (data_message[5]);
+    } else {
+      golay_b_buffer[i] = (data_message[2] << 8) | (data_message[3]);
+    }
+    gb_mean = golay_b_buffer[i];   
+  }
+  gb_mean /= 32;
+  
+  //perform cross_correlation
+  int results = 0;
+  for(int i = 0; i < sizeof(ga) / 4; i ++){
+    long xa = (golay_a_buffer[i] - ga_mean) * ga[i];
+    long xb = (golay_b_buffer[i] - gb_mean) * gb[i];
+    results += xa + xb;
+  }
+  
+  Serial.print("Results ");
+  Serial.println(results);
+  data_message[6] = (results >> 8) & 0xFF;
+  data_message[7] = (results) & 0xFF;
+  return 1;
 }

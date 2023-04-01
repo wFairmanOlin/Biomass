@@ -8,7 +8,7 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  delay(4000);
+  delay(3000);
   Serial.println("Sending Transmission");
   Wire.beginTransmission(1);
   Wire.endTransmission();
@@ -16,7 +16,7 @@ void loop() {
   Wire.beginTransmission(1);
   Wire.write(2);
   Wire.endTransmission();
-  delay(2000);
+  delay(1500);
   Wire.requestFrom(1, 4);
   if(Wire.available() == 4){
 //    Wire.read();

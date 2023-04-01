@@ -17,8 +17,9 @@ In addition to the deployed sensors, the project also utilizes a central basetat
 The folders are broken down as follows:
 
 * [biomass_ble](/biomass_ble/): code for the version 1 algae sensor (all-in-one sensor).
-* [topside](/topside/): code for the topside component.
-* sensor_head: code for the sensor head component.
+* [topside_box](/topside_box/): code for the topside component.
+* [sensor_head](/sensor_head/): code for the sensor head component.
+* [basestation](/basestation/): code for the esp32 radio receiver connected to the basestation.
 * [pc_basestation](/pc_basestation/): code for the basestation.
 
 ## Data

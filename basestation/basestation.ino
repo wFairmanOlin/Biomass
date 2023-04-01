@@ -59,7 +59,7 @@ void setup()
    */
   manager.setTimeout(5000);
 //  driver.setModemConfig(RH_RF95::Bw125Cr45Sf2048);
-  driver.setSpreadingFactor(10);
+  driver.setSpreadingFactor(12);
   driver.setSignalBandwidth(125000);
 //  breaks esp32 boards  
   driver.setFrequency(RF95_FREQ);
