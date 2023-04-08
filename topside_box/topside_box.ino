@@ -32,7 +32,7 @@
 //#define BATT_PIN 37
 
 #define SERVER_ADDRESS 1
-#define CLIENT_ADDRESS 5 //change this
+#define CLIENT_ADDRESS 6 //change this
 
 //Set Frequency
 #define RF95_FREQ 915.0
@@ -96,8 +96,6 @@ void setup()
   digitalWrite(LED, HIGH);
   delay(1000);
   digitalWrite(LED, LOW);
-  Serial.print("test ");
-  Serial.println(sizeof(golay_a_buffer));
   delay(2000);
   send_data();
 }
@@ -166,7 +164,7 @@ void send_status(){
  */
 void send_data(){
   data_message[0] = 2;
-  data_message[1] = get_golay();
+  data_message[1] = get_golay(0);
 
   //send data_message
   if (manager.sendtoWait(data_message, sizeof(data_message), SERVER_ADDRESS))
@@ -176,29 +174,59 @@ void send_data(){
   
 }
 
-/*
- * Communicate with the sensor head over I2C.
+void send_cmd(int cmd, int d_val){
+  Wire.beginTransmission(1);
+  Wire.write(cmd);
+  Wire.endTransmission(1);
+  delay(d_val);
+}
+
+/**
+ * State Machine for Receiver
  * 
- * Return 1 if successfull, else return 0
+ * State 0 -> go to deep sleep
+ * State 1 -> sample ADC
+ * State 2 -> turn on laser
+ * State 3 -> turn off laser
+ * State 4 -> turn on green led
+ * State 5 -> turn off green led
+ * 
  */
 int get_data(){
-  
+  //wake up device
   Wire.beginTransmission(1);
   Wire.endTransmission();
   delay(5);
-  Wire.beginTransmission(1);
-  Wire.write(2);
-  Wire.endTransmission();
-  delay(1000);
-  Wire.requestFrom(1, 4);
-  if(Wire.available() == 4){
+  //make sure laser is off
+  send_cmd(3, 5);
+  //sample ADC
+  send_cmd(1, 25);
+  Wire.requestFrom(1,2);
+  if(Wire.available() == 2){
     data_message[2] = Wire.read();
     data_message[3] = Wire.read();
+  }
+  else
+    return 0;
+  delay(5);
+  //turn on laser
+  send_cmd(2, 50);
+  //sample ADC
+  send_cmd(1, 25);
+  Wire.requestFrom(1,2);
+  if(Wire.available() == 2){
     data_message[4] = Wire.read();
     data_message[5] = Wire.read();
-    return 1;
   }
-  return 0;
+  else{
+    //try to turn off laser if issues with ADC
+    send_cmd(3, 5);
+    return 0;
+  }
+  delay(5);
+  //turn off laser
+  send_cmd(3, 5);
+  return 1;
 }
 
 /*
@@ -215,14 +243,17 @@ int read_battery(){
   return measured_vbat / 10;
 }
 
-/*
+
+ /*
  * Perform a golay calculation
+ * d_val: delay time in milliseconds
  */
-int get_golay(){
+int get_golay(int d_val){
   //fill golay_a sequence
   long ga_mean = 0;
   for (int i = 0; i < sizeof(ga) / 4; i ++){
     //abort if get_data fails
+    delay(d_val);
     if (get_data() == 0)
       return 0;
     //store data
@@ -239,6 +270,7 @@ int get_golay(){
   long gb_mean = 0;
   for (int i = 0; i < sizeof(gb) / 4; i ++){
     //abort if get_data fails
+    delay(d_val);
     if (get_data() == 0)
       return 0;
     //store data
