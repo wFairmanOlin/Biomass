@@ -32,7 +32,7 @@
 //#define BATT_PIN 37
 
 #define SERVER_ADDRESS 1
-#define CLIENT_ADDRESS 6 //change this
+#define CLIENT_ADDRESS 2 //change this
 
 //Set Frequency
 #define RF95_FREQ 915.0
