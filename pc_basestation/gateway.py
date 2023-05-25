@@ -24,8 +24,8 @@ from datetime import datetime
 # log in the local "log.log" file.
 #
 # Let the computer establish a network connection on reboot
-folder = "Desktop/Biomass/pc_basestation/"
-# folder = "" #for testing
+# folder = "Desktop/Biomass/pc_basestation/"
+folder = "" #for testing
 #############################################
 
 
@@ -55,8 +55,8 @@ logging.info('Starting')
 
 ############### SERIAL PORT VARIABLES ###############
 # port = '/dev/cu.usbserial-2'
-port = '/dev/cu.usbserial-0001'
-# port = '/dev/ttyACM0'
+# port = '/dev/cu.usbserial-0001'
+port = '/dev/ttyACM0'
 # port = '/dev/ttyUSB0' #for RPI
 ser  = init_serial(port)
 
@@ -134,9 +134,10 @@ while True:
 
                 if message_id == "lat":
                     if len(message) == 8:
+                        data = {message[2] : message[3], message[4] : message[5], message[6] : message[7]}
                         try:
                             sensor_ref = ref.child("gps")
-                            sensor_ref.child(message_time).set(message[3:])
+                            sensor_ref.child(message_time).set(data)
                         except:
                             logger.exception("uploading gps message failed")
                     else:
