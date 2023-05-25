@@ -55,9 +55,9 @@ logging.info('Starting')
 
 ############### SERIAL PORT VARIABLES ###############
 # port = '/dev/cu.usbserial-2'
-# port = '/dev/cu.usbserial-0001'
+port = '/dev/cu.usbserial-0001'
 # port = '/dev/ttyACM0'
-port = '/dev/ttyUSB0' #for RPI
+# port = '/dev/ttyUSB0' #for RPI
 ser  = init_serial(port)
 
 ############### FIREBASE VARIABLES ###############
@@ -131,7 +131,17 @@ while True:
                             logger.exception("uploading data message failed")
                     else:
                         logger.warning("Data Message Length Mis-Match %s", message)
-                    
+
+                if message_id == "lat":
+                    if len(message) == 8:
+                        try:
+                            sensor_ref = ref.child("gps")
+                            sensor_ref.child(message_time).set(message[3:])
+                        except:
+                            logger.exception("uploading gps message failed")
+                    else:
+                        logger.warning("GPS Message Length Mis-Match %s", message)
+    
                 # if message_id == "golay_a":
                 #     prev_id = sensor_id
                 #     prev_time = time.time()

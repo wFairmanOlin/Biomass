@@ -23,7 +23,7 @@
 #define RFM95_INT 26
 #define LED 25
 
-#define SERVER_ADDRESS 1
+#define SERVER_ADDRESS 10
 #define CLIENT_ADDRESS 2
 
 //Set Frequency
@@ -33,6 +33,12 @@
 RH_RF95 driver(RFM95_CS, RFM95_INT);
 // Class to manage message delivery and receipt
 RHReliableDatagram manager(driver, SERVER_ADDRESS);
+
+union Data {
+  int i;
+  float f;
+  uint8_t bytes[4];
+};
 
 
 void setup() 
@@ -124,7 +130,24 @@ void loop()
         }
         else
           Serial.println("Data Message Length Mismatch!");
+      }//handle data messages
+
+      //handle gps messages
+      if(buf[0] == 3){
+        if(len == 9){
+          int idx = 1;
+          Data lat, lng;
+          for (int i = 0; i < 4; i++)
+            lat.bytes[i] = buf[idx++];
+          for(int i = 0; i < 4; i++)
+            lng.bytes[i] = buf[idx++];
+          Serial.print("from 100");  
+          Serial.print(" lat "); Serial.print(lat.f, 6);
+          Serial.print(" lng "); Serial.print(lng.f, 6);
+          Serial.print(" RSSI "); Serial.print(driver.lastRssi(), DEC);
+        }
       }
+    
     }
   }
 }
