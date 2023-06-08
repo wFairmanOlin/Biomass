@@ -1,8 +1,10 @@
+Images/
 old/
 old_mechanical/
 current_mechanical/
 biomass_sd/
 PCB_Design/
+data/*.png
 *.pyc
 *.egg-info
 *fb_key.json
@@ -10,3 +12,5 @@ PCB_Design/
 *.DS_store
 *.log
 *.ipynb_checkpoints
+*.json
+*.pptx

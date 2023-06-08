@@ -23,8 +23,7 @@
 //#define RFM95_INT 26
 //#define LED 25
 
-#define SERVER_ADDRESS 10
-#define CLIENT_ADDRESS 2
+#define SERVER_ADDRESS 1
 
 //Set Frequency
 #define RF95_FREQ 915.0

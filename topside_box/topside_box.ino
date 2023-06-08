@@ -32,13 +32,13 @@
 //#define BATT_PIN 37
 
 #define SERVER_ADDRESS 1
-#define CLIENT_ADDRESS 2 //change this
+#define CLIENT_ADDRESS 4 //change this
 
 //Set Frequency
 #define RF95_FREQ 915.0
 
 //Schedule Updates in Minutes
-#define UPDATE_FREQ 10
+#define UPDATE_FREQ 20
 
 // Singleton instance of the radio driver
 RH_RF95 driver(RFM95_CS, RFM95_INT);
@@ -94,9 +94,9 @@ void setup()
   driver.setFrequency(RF95_FREQ);
   driver.setTxPower(23, false);
   digitalWrite(LED, HIGH);
-  delay(1000);
+  delay(5000);
   digitalWrite(LED, LOW);
-  delay(2000);
+  delay(500);
   send_data();
 }
 
@@ -111,11 +111,11 @@ void loop()
     //send messages
     delay(CLIENT_ADDRESS); //add unique delay
     digitalWrite(LED, HIGH);
-    //data
-    send_data();
-    delay(100);
     //status
     send_status();
+//    data
+    send_data();
+    delay(100);
     driver.sleep(); //powers down radio module. Has time delay for starting up again
     digitalWrite(LED, LOW);
     
