@@ -24,8 +24,8 @@ from datetime import datetime
 # log in the local "log.log" file.
 #
 # Let the computer establish a network connection on reboot
-folder = "Desktop/Biomass/pc_basestation/"
-# folder = "" #for testing
+# folder = "Desktop/Biomass/pc_basestation/"
+folder = "" #for testing
 #############################################
 
 
@@ -49,8 +49,10 @@ def init_serial(port):
 
 def restart_firebase(app):
     firebase_admin.delete_app(app)
-    time.sleep(10)
-    return firebase_admin.initialize_app(cred, {'databaseURL': 'https://haucs-monitoring-default-rtdb.firebaseio.com'})
+    time.sleep(30)
+    new_app = firebase_admin.initialize_app(cred, {'databaseURL': 'https://haucs-monitoring-default-rtdb.firebaseio.com'})
+    new_ref = db.reference('/')
+    return new_app, new_ref
 
 
 ############### LOGGING ###############
@@ -127,7 +129,7 @@ while True:
                             sensor_ref.child(message_time).set(data)
                         except:
                             logger.exception("uploading status message failed")
-                            app = restart_firebase(app)
+                            app, ref = restart_firebase(app)
                     else:
                         logger.warning("Status Message Length Mis-Match %s", message)
 
@@ -138,7 +140,7 @@ while True:
                             sensor_ref.child(message_time).set(message[3:])
                         except:
                             logger.exception("uploading data message failed")
-                            app = restart_firebase(app)
+                            app, ref = restart_firebase(app)
                     else:
                         logger.warning("Data Message Length Mis-Match %s", message)
 
@@ -150,7 +152,7 @@ while True:
                             sensor_ref.child(message_time).set(data)
                         except:
                             logger.exception("uploading gps message failed")
-                            app = restart_firebase(app)
+                            app, ref = restart_firebase(app)
                     else:
                         logger.warning("GPS Message Length Mis-Match %s", message)
     
