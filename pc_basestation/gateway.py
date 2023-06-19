@@ -2,6 +2,7 @@
 import os
 import serial
 import time
+import subprocess
 import logging
 import firebase_admin
 from firebase_admin import credentials
@@ -24,8 +25,8 @@ from datetime import datetime
 # log in the local "log.log" file.
 #
 # Let the computer establish a network connection on reboot
-# folder = "Desktop/Biomass/pc_basestation/"
-folder = "" #for testing
+folder = "Desktop/Biomass/pc_basestation/"
+# folder = "" #for testing
 #############################################
 
 
@@ -48,17 +49,22 @@ def init_serial(port):
     return ser
 
 def restart_firebase(app):
+    logging.info('Attempting to restart Firebase Connection')
     firebase_admin.delete_app(app)
-    time.sleep(30)
+    time.sleep(60)
+    logging.info('Current IP Address: ' + get_IP())
     new_app = firebase_admin.initialize_app(cred, {'databaseURL': 'https://haucs-monitoring-default-rtdb.firebaseio.com'})
     new_ref = db.reference('/')
     return new_app, new_ref
 
+def get_IP():
+    terminalResponse = subprocess.run(['hostname', '-I'], capture_output=True, text=True)
+    return terminalResponse.stdout
 
 ############### LOGGING ###############
 logging.basicConfig(format='%(asctime)s %(levelname)s: %(message)s', filename=folder + 'log.log', encoding='utf-8', level=logging.INFO)
 logger = logging.getLogger(__name__)
-logging.info('Starting')
+logger.info('Starting with IP: ' + get_IP())
 
 ############### SERIAL PORT VARIABLES ###############
 # port = '/dev/cu.usbserial-2'
@@ -128,7 +134,7 @@ while True:
                             sensor_ref = ref.child(sensor_id + "/" + message_id)
                             sensor_ref.child(message_time).set(data)
                         except:
-                            logger.exception("uploading status message failed")
+                            logger.warning("uploading status message failed")
                             app, ref = restart_firebase(app)
                     else:
                         logger.warning("Status Message Length Mis-Match %s", message)
@@ -139,7 +145,7 @@ while True:
                             sensor_ref = ref.child(sensor_id + "/data")
                             sensor_ref.child(message_time).set(message[3:])
                         except:
-                            logger.exception("uploading data message failed")
+                            logger.warning("uploading data message failed")
                             app, ref = restart_firebase(app)
                     else:
                         logger.warning("Data Message Length Mis-Match %s", message)
@@ -151,7 +157,7 @@ while True:
                             sensor_ref = ref.child("gps")
                             sensor_ref.child(message_time).set(data)
                         except:
-                            logger.exception("uploading gps message failed")
+                            logger.warning("uploading gps message failed")
                             app, ref = restart_firebase(app)
                     else:
                         logger.warning("GPS Message Length Mis-Match %s", message)
