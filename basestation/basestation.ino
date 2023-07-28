@@ -153,7 +153,7 @@ void loop()
         if(len == 121){
           Serial.print("from "); Serial.print(from);
           Serial.print(" fdata");
-          for(int i = 2; i < len; i += 2){
+          for(int i = 1; i < len; i += 2){
             Serial.print(" ");
             int val = (buf[i] << 8) | buf[i + 1];
             Serial.print(val);

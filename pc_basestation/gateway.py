@@ -69,9 +69,16 @@ logger.info('Starting with IP: ' + get_IP())
 ############### SERIAL PORT VARIABLES ###############
 # port = '/dev/cu.usbserial-2'
 # port = '/dev/cu.usbserial-0001'
-port = '/dev/ttyACM0'
+port = '/dev/ttyACM'
+portnum = 0
 # port = '/dev/ttyUSB0' #for RPI
-ser  = init_serial(port)
+for i in range(10):
+    try:
+        print(port + str(i))
+        ser = init_serial(port + str(i))
+    except:
+        continue
+portnum = i
 
 ############### FIREBASE VARIABLES ###############
 #Store Key in separate file !!!
@@ -161,6 +168,20 @@ while True:
                             app, ref = restart_firebase(app)
                     else:
                         logger.warning("GPS Message Length Mis-Match %s", message)
+                
+                if message_id == "fdata":
+                    if len(message) == 63:
+                        data = dict()
+                        data["off"] = message[3::2]
+                        data["on"] = message[4::2]
+                        try:
+                            sensor_ref = ref.child(sensor_id + "/fdata")
+                            sensor_ref.child(message_time).set(data)
+                        except:
+                            logger.warning("uploading fdata failed")
+                    else:
+                        logger.warning("fdata Length Mis-Match %s", message)
+                        
 
     
                 # if message_id == "golay_a":
