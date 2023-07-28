@@ -146,7 +146,23 @@ void loop()
           Serial.print(" RSSI "); Serial.print(driver.lastRssi(), DEC);
         }
       }
-    
+
+      //handle fast data
+      if(buf[0] == 4){
+        //check length
+        if(len == 121){
+          Serial.print("from "); Serial.print(from);
+          Serial.print(" fdata");
+          for(int i = 2; i < len; i += 2){
+            Serial.print(" ");
+            int val = (buf[i] << 8) | buf[i + 1];
+            Serial.print(val);
+          }
+          Serial.println();
+        }
+        else
+          Serial.println("Fast Data Message Length Mismatch!");
+      }
     }
   }
 }

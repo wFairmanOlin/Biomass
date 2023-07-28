@@ -96,7 +96,7 @@ while True:
     #reboot computer to power cycle the LoRa Receiver
     if (time.time() - last_message_received) > 1800:
         logger.warning("No Message Received for 30 Minutes")
-        last_messaged_received = time.time()
+        last_message_received = time.time()
         #os.system('sudo reboot')
 
     try:
@@ -161,6 +161,7 @@ while True:
                             app, ref = restart_firebase(app)
                     else:
                         logger.warning("GPS Message Length Mis-Match %s", message)
+
     
                 # if message_id == "golay_a":
                 #     prev_id = sensor_id
