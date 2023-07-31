@@ -150,10 +150,11 @@ void loop()
       //handle fast data
       if(buf[0] == 4){
         //check length
-        if(len == 121){
+        if(len == 103){
           Serial.print("from "); Serial.print(from);
-          Serial.print(" fdata");
-          for(int i = 1; i < len; i += 2){
+          Serial.print(" fdata ");
+          Serial.print(buf[1]); Serial.print(" of "); Serial.print(buf[2]);
+          for(int i = 3; i < len; i += 2){
             Serial.print(" ");
             int val = (buf[i] << 8) | buf[i + 1];
             Serial.print(val);

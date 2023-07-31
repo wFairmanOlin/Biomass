@@ -32,13 +32,13 @@
 //#define BATT_PIN 37
 
 #define SERVER_ADDRESS 1
-#define CLIENT_ADDRESS 4 //change this
+#define CLIENT_ADDRESS 3 //sensor id + 1 (i know, this should change)
 
 //Set Frequency
 #define RF95_FREQ 915.0
 
 //Schedule Updates in Minutes
-#define UPDATE_FREQ 20
+#define UPDATE_FREQ 1
 
 // Singleton instance of the radio driver
 RH_RF95 driver(RFM95_CS, RFM95_INT);
@@ -46,7 +46,7 @@ RH_RF95 driver(RFM95_CS, RFM95_INT);
 RHReliableDatagram manager(driver, CLIENT_ADDRESS);
 
 uint8_t status_message[3];
-uint8_t data_message[121];
+uint8_t data_message[600];
 
 /* COUNTERS */
 unsigned long prev_update = 0;
@@ -96,19 +96,19 @@ uint8_t buf[RH_RF95_MAX_MESSAGE_LEN];
 
 void loop()
 {
-  get_data(wdt_counter);
-  // send battery info
-  if (status_counter >= 120){
-    status_counter = 0;
-    send_status();
-  }
-  // send data
-  if (wdt_counter >= 29){
+  int wdt_limit = UPDATE_FREQ * 60 / 8;
+  if (wdt_counter >= wdt_limit){
     wdt_counter = 0;
-    status_counter ++;
+    //send messages
+    delay(CLIENT_ADDRESS); //add unique delay
+    digitalWrite(LED, HIGH);
+    //status
+    send_status();
+//    data
     send_data();
-    delay(10);
-    driver.sleep();
+    delay(100);
+    driver.sleep(); //powers down radio module. Has time delay for starting up again
+    digitalWrite(LED, LOW);
     
   }
   /* end of loop handles putting uC to sleep*/
@@ -151,13 +151,35 @@ void send_status(){
  * message ID: 2
  */
 void send_data(){
-  data_message[0] = 4;
-  //send data_message
-  if (manager.sendtoWait(data_message, sizeof(data_message), SERVER_ADDRESS))
-    Serial.println("Data Message Acknowledged");
-  else
-    Serial.println("Data Message Not Received");
+  // store data
+  for (int i = 0; i < 300; i ++){
+    get_data(i);
+  }
   
+  int msg_type = 4;
+  int msg_size = 100;
+  int msg_count = sizeof(data_message) / msg_size;
+  uint8_t temp_data[msg_size + 3];
+  for (int i = 1; i <= msg_count; i ++){
+    //header
+    temp_data[0] = msg_type;
+    temp_data[1] = i;
+    temp_data[2] = msg_count;
+    //data
+    for (int idx = (i - 1) * msg_size; idx < (i * msg_size); idx++){
+      temp_data[idx + 3] = data_message[idx];
+    }
+    if (manager.sendtoWait(data_message, sizeof(data_message), SERVER_ADDRESS)) {
+      Serial.print("Data Message ");
+      Serial.print(i); Serial.print("/"); Serial.print(msg_count);
+      Serial.println(" Received");
+    }
+    else {
+        Serial.print("Data Message ");
+        Serial.print(i); Serial.print("/"); Serial.print(msg_count);
+        Serial.println(" NOT Received");
+    }
+  }
 }
 
 void send_cmd(int cmd, int d_val){
@@ -180,6 +202,8 @@ void send_cmd(int cmd, int d_val){
  */
 int get_data(int count){
   //wake up device
+  uint16_t low = 0;
+  uint16_t high = 0;
   Wire.beginTransmission(1);
   Wire.endTransmission();
   delay(5);
@@ -189,8 +213,9 @@ int get_data(int count){
   send_cmd(1, 25);
   Wire.requestFrom(1,2);
   if(Wire.available() == 2){
-    data_message[4 * count + 1] = Wire.read();
-    data_message[4 * count + 2] = Wire.read();
+    low = (Wire.read() << 8) | Wire.read();
+//    data_message[4 * count + 1] = Wire.read();
+//    data_message[4 * count + 2] = Wire.read();
   }
   else
     return 0;
@@ -201,17 +226,20 @@ int get_data(int count){
   send_cmd(1, 25);
   Wire.requestFrom(1,2);
   if(Wire.available() == 2){
-    data_message[4 * count + 3] = Wire.read();
-    data_message[4 * count + 4] = Wire.read();
+    high = (Wire.read() << 8) | Wire.read();
+//    data_message[4 * count + 3] = Wire.read();
+//    data_message[4 * count + 4] = Wire.read();
   }
   else{
     //try to turn off laser if issues with ADC
     send_cmd(3, 5);
     return 0;
   }
-  delay(5);
   //turn off laser
   send_cmd(3, 5);
+  uint16_t diff = high - low;
+  data_message[2 * count] = (diff >> 8);
+  data_message[2 * count + 1] = (diff & 0xFF);
   return 1;
 }
 
