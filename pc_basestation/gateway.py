@@ -96,6 +96,9 @@ prev_time = 0     #time that previous golay message was received
 
 last_message_received = time.time() #time that latest general message was received
 
+## FOR fdata ##
+fdata_data = dict()
+fdata_timers = dict()
 ############### MAIN LOOP ###############
 while True:
     
@@ -170,15 +173,38 @@ while True:
                         logger.warning("GPS Message Length Mis-Match %s", message)
                 
                 if message_id == "fdata":
-                    if len(message) == 63:
-                        data = dict()
-                        data["off"] = message[3::2]
-                        data["on"] = message[4::2]
-                        try:
-                            sensor_ref = ref.child(sensor_id + "/fdata")
-                            sensor_ref.child(message_time).set(data)
-                        except:
-                            logger.warning("uploading fdata failed")
+                    print(len(message))
+                    if len(message) == 56:
+                        idx = int(message[3])
+                        idx_size = int(message[5])
+                        send_data = False
+                        if idx == 1:
+                            fdata_timers[sensor_id] = time.time()
+                            fdata_data[sensor_id] = {1 : message[6:]}
+                        elif idx == idx_size:
+                            fdata_data[sensor_id][idx] = message[6:]
+                            if (time.time() - fdata_timers[sensor_id]) > 120:
+                                if len(fdata_data[sensor_id]) == idx_size:
+                                    send_data = True
+                                else:
+                                    logger.warning("missed a packet in fdata")
+                            else:
+                                (logger.warning("fdata packet timeout"))
+                            fdata_data[sensor_id] = dict()
+                        else:
+                            fdata_timers[sensor_id] = time.time()
+                            if fdata_data.get(sensor_id):
+                                fdata_data[sensor_id][idx] = message[6:]
+
+                        if send_data:
+                            data = []
+                            for i in fdata_data[sensor_id]:
+                                data += fdata_data[sensor_id][i]
+                            try:
+                                sensor_ref = ref.child(sensor_id + "/fdata")
+                                sensor_ref.child(message_time).set(data)
+                            except:
+                                logger.warning("uploading fdata failed")
                     else:
                         logger.warning("fdata Length Mis-Match %s", message)
                         
