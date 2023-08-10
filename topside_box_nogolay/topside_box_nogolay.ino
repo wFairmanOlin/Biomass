@@ -32,13 +32,13 @@
 //#define BATT_PIN 37
 
 #define SERVER_ADDRESS 1
-#define CLIENT_ADDRESS 3 //sensor id + 1 (i know, this should change)
+#define CLIENT_ADDRESS 4 //sensor id + 1 (i know, this should change)
 
 //Set Frequency
 #define RF95_FREQ 915.0
 
 //Schedule Updates in Minutes
-#define UPDATE_FREQ 1
+#define UPDATE_FREQ 20
 
 // Singleton instance of the radio driver
 RH_RF95 driver(RFM95_CS, RFM95_INT);
@@ -115,7 +115,7 @@ void loop()
   wdt_counter ++;
   //configure watchdog timer to go off in 1 second
   WDTCSR = bit(WDCE) | bit(WDE);
-  WDTCSR = bit(WDIE) | bit(WDP2) | bit(WDP1);
+  WDTCSR = bit(WDIE) | bit(WDP3) | bit(WDP0);
   wdt_reset();
 
   set_sleep_mode(SLEEP_MODE_PWR_DOWN);
@@ -166,10 +166,11 @@ void send_data(){
     temp_data[1] = i;
     temp_data[2] = msg_count;
     //data
-    for (int idx = (i - 1) * msg_size; idx < (i * msg_size); idx++){
-      temp_data[idx + 3] = data_message[idx];
+    for (int idx = 0; idx < msg_size; idx++){
+      temp_data[idx + 3] = data_message[(i - 1) * msg_size + idx];
     }
-    if (manager.sendtoWait(data_message, sizeof(data_message), SERVER_ADDRESS)) {
+    Serial.println();
+    if (manager.sendtoWait(temp_data, sizeof(temp_data), SERVER_ADDRESS)) {
       Serial.print("Data Message ");
       Serial.print(i); Serial.print("/"); Serial.print(msg_count);
       Serial.println(" Received");
@@ -202,8 +203,8 @@ void send_cmd(int cmd, int d_val){
  */
 int get_data(int count){
   //wake up device
-  uint16_t low = 0;
-  uint16_t high = 0;
+  int low = 0;
+  int high = 0;
   Wire.beginTransmission(1);
   Wire.endTransmission();
   delay(5);
@@ -221,7 +222,7 @@ int get_data(int count){
     return 0;
   delay(5);
   //turn on laser
-  send_cmd(2, 50);
+  send_cmd(2, 45);
   //sample ADC
   send_cmd(1, 25);
   Wire.requestFrom(1,2);
@@ -235,11 +236,14 @@ int get_data(int count){
     send_cmd(3, 5);
     return 0;
   }
+  delay(5);
   //turn off laser
   send_cmd(3, 5);
-  uint16_t diff = high - low;
+  int diff = high - low;
   data_message[2 * count] = (diff >> 8);
   data_message[2 * count + 1] = (diff & 0xFF);
+//  data_message[2 * count] = 0xFF;
+//  data_message[2 * count + 1] = 0x00;
   return 1;
 }
 

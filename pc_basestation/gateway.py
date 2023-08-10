@@ -173,7 +173,6 @@ while True:
                         logger.warning("GPS Message Length Mis-Match %s", message)
                 
                 if message_id == "fdata":
-                    print(len(message))
                     if len(message) == 56:
                         idx = int(message[3])
                         idx_size = int(message[5])
@@ -182,15 +181,15 @@ while True:
                             fdata_timers[sensor_id] = time.time()
                             fdata_data[sensor_id] = {1 : message[6:]}
                         elif idx == idx_size:
-                            fdata_data[sensor_id][idx] = message[6:]
-                            if (time.time() - fdata_timers[sensor_id]) > 120:
-                                if len(fdata_data[sensor_id]) == idx_size:
-                                    send_data = True
+                            if fdata_data.get(sensor_id):
+                                fdata_data[sensor_id][idx] = message[6:]
+                                if (time.time() - fdata_timers[sensor_id]) < 120:
+                                    if len(fdata_data[sensor_id]) == idx_size:
+                                        send_data = True
+                                    else:
+                                        logger.warning("missed a packet in fdata")
                                 else:
-                                    logger.warning("missed a packet in fdata")
-                            else:
-                                (logger.warning("fdata packet timeout"))
-                            fdata_data[sensor_id] = dict()
+                                    (logger.warning("fdata packet timeout"))
                         else:
                             fdata_timers[sensor_id] = time.time()
                             if fdata_data.get(sensor_id):
@@ -200,10 +199,12 @@ while True:
                             data = []
                             for i in fdata_data[sensor_id]:
                                 data += fdata_data[sensor_id][i]
+                            fdata_data[sensor_id] = dict()
                             try:
                                 sensor_ref = ref.child(sensor_id + "/fdata")
                                 sensor_ref.child(message_time).set(data)
                             except:
+                                print("data failed to upload")
                                 logger.warning("uploading fdata failed")
                     else:
                         logger.warning("fdata Length Mis-Match %s", message)
