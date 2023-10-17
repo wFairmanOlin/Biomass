@@ -208,7 +208,44 @@ while True:
                                 logger.warning("uploading fdata failed")
                     else:
                         logger.warning("fdata Length Mis-Match %s", message)
-                        
+
+
+                if message_id == "gdata":
+                    if len(message) == 106:
+                        idx = int(message[3])
+                        idx_size = int(message[5])
+                        send_data = False
+                        if idx == 1:
+                            gdata_timers[sensor_id] = time.time()
+                            gdata_data[sensor_id] = {1 : message[6:]}
+                        elif idx == idx_size:
+                            if gdata_data.get(sensor_id):
+                                gdata_data[sensor_id][idx] = message[6:]
+                                if (time.time() - gdata_timers[sensor_id]) < 120:
+                                    if len(gdata_data[sensor_id]) == idx_size:
+                                        send_data = True
+                                    else:
+                                        logger.warning("missed a packet in gdata")
+                                else:
+                                    (logger.warning("gdata packet timeout"))
+                        else:
+                            gdata_timers[sensor_id] = time.time()
+                            if gdata_data.get(sensor_id):
+                                gdata_data[sensor_id][idx] = message[6:]
+
+                        if send_data:
+                            data = []
+                            for i in gdata_data[sensor_id]:
+                                data += gdata_data[sensor_id][i]
+                            gdata_data[sensor_id] = dict()
+                            try:
+                                sensor_ref = ref.child(sensor_id + "/gdata")
+                                sensor_ref.child(message_time).set(data)
+                            except:
+                                print("data failed to upload")
+                                logger.warning("uploading fdata failed")
+                    else:
+                        logger.warning("gdata Length Mis-Match %s", message)
 
     
                 # if message_id == "golay_a":
