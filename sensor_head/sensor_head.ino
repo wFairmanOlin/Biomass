@@ -48,7 +48,7 @@ void loop() {
   switch (state) {
 
     case 1:
-      takeSample(100);
+      takeSingleSample();
       //request ADC data to leave state 1
       break;
 
@@ -124,6 +124,11 @@ void takeSample(int samples) {
   data[1] = sample_val & 0xFF;
 }
 
+void takeSingleSample(){
+  uint32_t sample_val = analogRead(DIODE);
+  data[0] = (sample_val >> 8) & 0xFF;
+  data[1] = sample_val & 0xFF;
+}
 
 //void takeSample(int samples) {
 //  uint32_t local_off = 0;

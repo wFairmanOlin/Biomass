@@ -124,7 +124,7 @@ while True:
         logger.exception("reading serial buffer failed")
         ser.close()
         time.sleep(10)
-        ser = init_serial(port)
+        ser  = init_serial(port + str(portnum))
 
     if (c):
         buf = b''.join([buf, c])
