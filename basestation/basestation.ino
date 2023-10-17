@@ -164,6 +164,28 @@ void loop()
         else
           Serial.println("Fast Data Message Length Mismatch!");
       }
+
+      //handle g data
+      if(buf[0] == 5){
+        //check length
+        //check length
+        if(len == 103){
+            Serial.print("from "); Serial.print(from);
+            Serial.print(" gdata ");
+            Serial.print(buf[1]); Serial.print(" of "); Serial.print(buf[2]);
+            for(int i = 3; i < len; i++){  // Adjusted loop to process one byte at a time
+                Serial.print(" ");
+                int val = buf[i];  // Using only MSB
+                Serial.print(val);
+            }
+            Serial.println();
+        }
+        else {
+            Serial.println("Fast Data Message Length Mismatch!");
+            Serial.println(buf[0]);
+        }
+      }
+
     }
   }
 }
