@@ -110,7 +110,7 @@ void loop()
       }
 
       //handle data messages
-      if(buf[0] == 2){
+      else if(buf[0] == 2){
         //check length
         if(len == 8){
           //check stale data
@@ -132,7 +132,7 @@ void loop()
       }//handle data messages
 
       //handle gps messages
-      if(buf[0] == 3){
+      else if(buf[0] == 3){
         if(len == 9){
           int idx = 1;
           union Data lat, lng;
@@ -148,7 +148,7 @@ void loop()
       }
 
       //handle fast data
-      if(buf[0] == 4){
+      else if(buf[0] == 4){
         //check length
         if(len == 103){
           Serial.print("from "); Serial.print(from);
@@ -166,8 +166,7 @@ void loop()
       }
 
       //handle g data
-      if(buf[0] == 5){
-        //check length
+      else if(buf[0] == 5){
         //check length
         if(len == 103){
             Serial.print("from "); Serial.print(from);
@@ -184,6 +183,10 @@ void loop()
             Serial.println("Fast Data Message Length Mismatch!");
             Serial.println(buf[0]);
         }
+      }
+
+      else{
+        Serial.print("Message Type Unknown: "); Serial.println(buf[0]);
       }
 
     }

@@ -28,7 +28,7 @@
 #define RF95_FREQ 915.0
 
 //Schedule Updates in Minutes
-#define UPDATE_FREQ 20
+#define UPDATE_FREQ 5
 
 // Singleton instance of the radio driver
 RH_RF95 driver(RFM95_CS, RFM95_INT);
@@ -36,7 +36,7 @@ RH_RF95 driver(RFM95_CS, RFM95_INT);
 RHReliableDatagram manager(driver, CLIENT_ADDRESS);
 
 uint8_t status_message[3];
-uint8_t data_message[1200];  // Updated size
+uint8_t data_message[600];  // Updated size
 
 /* COUNTERS */
 unsigned long prev_update = 0;
@@ -75,27 +75,25 @@ uint8_t buf[RH_RF95_MAX_MESSAGE_LEN];
 
 void loop()
 {
-  // int wdt_limit = UPDATE_FREQ * 60 / 8;
-  // if (wdt_counter >= wdt_limit){
-  //   wdt_counter = 0;
-  //   send_status();
-  //   send_data();
-  //   driver.sleep(); //powers down radio module. Has time delay for starting up again
-  //   digitalWrite(LED, LOW);
-  // }
+  int wdt_limit = UPDATE_FREQ * 60 / 8;
+  if (wdt_counter >= wdt_limit){
+    wdt_counter = 0;
+    send_status();
+    send_data();
+    driver.sleep(); //powers down radio module. Has time delay for starting up again
+    digitalWrite(LED, LOW);
+  }
 
-  // wdt_counter++;
-  // //configure watchdog timer to go off in 1 second
-  // WDTCSR = bit(WDCE) | bit(WDE);
-  // WDTCSR = bit(WDIE) | bit(WDP3) | bit(WDP0);
-  // wdt_reset();
+  wdt_counter++;
+  //configure watchdog timer to go off in 1 second
+  WDTCSR = bit(WDCE) | bit(WDE);
+  WDTCSR = bit(WDIE) | bit(WDP3) | bit(WDP0);
+  wdt_reset();
 
-  // set_sleep_mode(SLEEP_MODE_PWR_DOWN);
-  // sleep_enable();
-  // sleep_cpu();
-  // sleep_disable();
-  send_status();
-  send_data();
+  set_sleep_mode(SLEEP_MODE_PWR_DOWN);
+  sleep_enable();
+  sleep_cpu();
+  sleep_disable();
 }
 
 void send_status() {
@@ -111,7 +109,7 @@ void send_status() {
 }
 
 void send_data() {
-  for (int i = 0; i < 600; i++) {
+  for (int i = 0; i < sizeof(data_message); i++) {
     get_data(i);
   }
 
@@ -120,7 +118,7 @@ void send_data() {
     Serial.println(data_message[i]);
   }
 
-  int msg_type = 4;
+  int msg_type = 5;
   int msg_size = 100;
   int msg_count = sizeof(data_message) / msg_size;
   uint8_t temp_data[msg_size + 3];
@@ -157,15 +155,15 @@ void send_cmd(int cmd, int d_val) {
 }
 
 int get_data(int count) {
-  int low = 0;
+  int val = 0;
 
-  send_cmd(1, 4);
+  send_cmd(1, 8); 
   Wire.requestFrom(1, 2);
   if (Wire.available() == 2) {
-    low = (Wire.read() << 8) | Wire.read();
+    val = (Wire.read() << 8) | Wire.read();
   }
 
-  uint8_t msbs = 0xFF & (low >> 2);
+  uint8_t msbs = 0xFF & (val >> 2);
   data_message[count] = msbs;
 
   return 1;
