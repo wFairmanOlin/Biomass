@@ -24,7 +24,7 @@ from smbus2 import SMBus, i2c_msg
 # log in the local "log.log" file.
 #
 # Let the computer establish a network connection on reboot
-folder = "Desktop/Biomass/pc_basestation/"
+folder = "Desktop/Biomass/egg_eye/code/"
 # folder = "" #for testing
 
 ############### I2C FUNCTIONS ############### 
@@ -36,34 +36,41 @@ folder = "Desktop/Biomass/pc_basestation/"
 # State 5 -> turn off green led
 
 def collect_sample():
-    with SMBus(1) as bus:
-        bus.write_byte(1,5) # turn off led 
-        time.sleep(0.1)
-        bus.write_byte(1, 3) # turn off laser
-        time.sleep(0.1)
-        bus.write_byte(1, 1) # take sample
-        time.sleep(0.1)
-        msg = i2c_msg.read(1,2) # read sample
-        bus.i2c_rdwr(msg)
-        msg = list(msg)
-        off = (int(msg[0]) << 8) + int(msg[1])
-        bus.write_byte(1, 4) # turn on led
-        time.sleep(0.1)
-        bus.write_byte(1, 2) # turn on laser
-        time.sleep(0.25)
-        bus.write_byte(1, 1) # take sample
-        time.sleep(0.1)
-        msg = i2c_msg.read(1,2) # read sample
-        bus.i2c_rdwr(msg)
-        msg = list(msg)
-        on = (int(msg[0]) << 8) + int(msg[1])
-        time.sleep(1)
-        bus.write_byte(1, 5) # turn off led
-        time.sleep(0.1)
-        bus.write_byte(1, 3) # turn off laser
-        time.sleep(0.1)
+    try:
+        with SMBus(1) as bus:
+            bus.write_byte(1,5) # turn off led 
+            time.sleep(0.1)
+            bus.write_byte(1, 3) # turn off laser
+            time.sleep(0.1)
+            bus.write_byte(1, 1) # take sample
+            time.sleep(0.1)
+            msg = i2c_msg.read(1,2) # read sample
+            bus.i2c_rdwr(msg)
+            msg = list(msg)
+            off = (int(msg[0]) << 8) + int(msg[1])
+            bus.write_byte(1, 4) # turn on led
+            time.sleep(0.25)
+            bus.write_byte(1, 2) # turn on laser
+            time.sleep(0.25)
+            bus.write_byte(1, 1) # take sample
+            time.sleep(0.1)
+            msg = i2c_msg.read(1,2) # read sample
+            bus.i2c_rdwr(msg)
+            msg = list(msg)
+            on = (int(msg[0]) << 8) + int(msg[1])
+            time.sleep(0.5)
+            bus.write_byte(1, 5) # turn off led
+            time.sleep(0.1)
+            bus.write_byte(1, 3) # turn off laser
+            time.sleep(0.1)
+        
+        return off, on
+    
+    except:
+        logger.warning("communication with sensor failed")
+        return -1, -1
 
-    return off, on
+    
 
         
 
