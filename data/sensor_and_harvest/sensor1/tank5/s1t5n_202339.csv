@@ -1,0 +1,4 @@
+dates,on,off,g_val,times,avg,delta,int_dates,distance,avg_clean,Temp,Pressure,Humidity,Solar_radiation,harvest,tank,status_harvest
+2023-03-09 10:00:00-05:00,,,,,,,,,,,,,,-22.7,,harvest
+2023-03-16 10:00:00-04:00,,,,,,,,,,,,,,-16.3,,harvest
+2023-03-23 10:00:00-04:00,,,,,,,,,,,,,,-63.81,,empty
