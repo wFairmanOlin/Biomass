@@ -1,0 +1,8 @@
+dates,on,off,g_val,times,avg,delta,int_dates,distance,avg_clean,Temp,Pressure,Humidity,Solar_radiation,harvest,tank,status_harvest
+2023-05-11 10:00:00-04:00,,,,,,,,,,,,,,22.11,,restock
+2023-05-18 10:00:00-04:00,,,,,,,,,,,,,,-23.3,,harvest
+2023-05-24 10:00:00-04:00,,,,,,,,,,,,,,-20.1,,harvest
+2023-06-01 10:00:00-04:00,,,,,,,,,,,,,,-22.8,,harvest
+2023-06-08 10:00:00-04:00,,,,,,,,,,,,,,-24.3,,harvest
+2023-06-15 10:00:00-04:00,,,,,,,,,,,,,,-12.4,,harvest
+2023-06-22 10:00:00-04:00,,,,,,,,,,,,,,-61.71,,empty
