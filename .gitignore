@@ -4,6 +4,7 @@ old_mechanical/
 current_mechanical/
 biomass_sd/
 PCB_Design/
+data/latest_data.json
 data/*.png
 *.pyc
 *.egg-info

@@ -28,7 +28,7 @@
 #define RF95_FREQ 915.0
 
 //Schedule Updates in Minutes
-#define UPDATE_FREQ 5
+#define UPDATE_FREQ 20
 
 // Singleton instance of the radio driver
 RH_RF95 driver(RFM95_CS, RFM95_INT);
