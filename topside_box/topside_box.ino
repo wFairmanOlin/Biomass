@@ -32,13 +32,14 @@
 //#define BATT_PIN 37
 
 #define SERVER_ADDRESS 1
-#define CLIENT_ADDRESS 4 //change this
+#define CLIENT_ADDRESS 5 //change this
 
 //Set Frequency
 #define RF95_FREQ 915.0
 
 //Schedule Updates in Minutes
 #define UPDATE_FREQ 20
+#define STATUS_UPDATE_FREQ 60
 
 // Singleton instance of the radio driver
 RH_RF95 driver(RFM95_CS, RFM95_INT);
@@ -62,6 +63,7 @@ long golay_b_buffer[32];
 unsigned long prev_update = 0;
 
 /* Watchdog Timer for Low Power Mode*/
+int status_counter = 0;
 int wdt_counter = 0;
 ISR (WDT_vect){
   wdt_disable(); //end watchdog
@@ -96,7 +98,9 @@ void setup()
   digitalWrite(LED, HIGH);
   delay(5000);
   digitalWrite(LED, LOW);
-  delay(500);
+  delay(1000);
+  send_status();
+  delay(1000);
   send_data();
 }
 
@@ -105,26 +109,37 @@ uint8_t buf[RH_RF95_MAX_MESSAGE_LEN];
 
 void loop()
 {
+  int status_limit = STATUS_UPDATE_FREQ * 60 / 8;
   int wdt_limit = UPDATE_FREQ * 60 / 8;
+  
   if (wdt_counter >= wdt_limit){
     wdt_counter = 0;
-    //send messages
-    delay(CLIENT_ADDRESS); //add unique delay
+    //only send message at night
+    if (get_ambient() < 5){
+      //send messages
+      delay(CLIENT_ADDRESS); //add unique delay
+      digitalWrite(LED, HIGH);
+      send_data();
+      delay(100);
+      driver.sleep(); //powers down radio module. Has time delay for starting up again
+      digitalWrite(LED, LOW);
+    }
+  }
+
+  if (status_counter >= status_limit){
+    status_counter = 0;
+    delay(CLIENT_ADDRESS);
     digitalWrite(LED, HIGH);
-    //status
     send_status();
-//    data
-    send_data();
     delay(100);
     driver.sleep(); //powers down radio module. Has time delay for starting up again
     digitalWrite(LED, LOW);
-    
   }
-  //for testing
-//  delay(8000);
-//  wdt_counter ++;
-  /* end of loop handles putting uC to sleep*/
+
+  //end of loop handles putting uC to sleep
   wdt_counter ++;
+  status_counter ++;
+  
   //configure watchdog timer to go off in 8 seconds
   WDTCSR = bit(WDCE) | bit(WDE);
   WDTCSR = bit(WDIE) | bit(WDP3) | bit(WDP0);
@@ -227,6 +242,33 @@ int get_data(){
   //turn off laser
   send_cmd(3, 5);
   return 1;
+}
+
+/*
+ * Get Ambient Light Levels
+ */
+int get_ambient(){
+
+  uint8_t lsb = 0;
+  uint8_t msb = 0;
+  //wake up device
+  Wire.beginTransmission(1);
+  Wire.endTransmission();
+  delay(5);
+  //make sure laser is off
+  send_cmd(3, 5);
+  //sample ADC
+  send_cmd(1, 25);
+  Wire.requestFrom(1,2);
+  if(Wire.available() == 2){
+    msb = Wire.read();
+    lsb = Wire.read();
+  }
+  else
+    return 0;
+
+  int val = (msb << 8) | lsb;
+  return val;
 }
 
 /*
