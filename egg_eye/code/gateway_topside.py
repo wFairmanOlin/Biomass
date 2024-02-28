@@ -8,6 +8,7 @@ from firebase_admin import credentials
 from firebase_admin import db
 from datetime import datetime
 from smbus2 import SMBus, i2c_msg
+from MCP342x import MCP342x
 
 
 ############### Running On Startup ###############
@@ -117,34 +118,64 @@ def collect_sample():
     
 
 def burst_collection(length):
-    try:
-        data = []
-        with SMBus(1) as bus:
-            bus.write_byte(1, 4) # turn on led
-            time.sleep(0.1)
-            bus.write_byte(1, 2) # turn on laser
-            time.sleep(0.1)
+
+    error_count = -1
+    data = -1
+
+    while (data == -1) and (error_count < 10):
+        error_count += 1
+        try:
+            data = []
+            with SMBus(1) as bus:
+                bus.write_byte(1, 4) # turn on led
+                time.sleep(0.1)
+                bus.write_byte(1, 2) # turn on laser
+                time.sleep(0.1)
+                
+                for i in range(length):
+                    bus.write_byte(1, 1) # take sample
+                    time.sleep(0.012)
+                    msg = i2c_msg.read(1,2) 
+                    bus.i2c_rdwr(msg) # read sample
+                    msg = list(msg)
+                    data  += [(int(msg[0]) << 8) + int(msg[1])]
+                    time.sleep(0.012)
+
+                bus.write_byte(1, 3) # turn off laser
+                time.sleep(0.1)
+                bus.write_byte(1, 5) # turn off led
+                time.sleep(0.1)
+        except:
+            logger.warning("communication with sensor failed")
+            data = -1
+            time.sleep(3)
+    
+    return data, error_count
+
+def adc_burst_collection(length):
+    '''
+    Multiple samples from mcp3424 ADC hat
+    '''
+    error_count = -1
+    data = -1
+
+    while (data == -1) and (error_count < 10):
+        error_count += 1
+        try:
+            data = []
+            with SMBus(1) as bus:
+                adc = MCP342x(bus, 0x68, channel=0, resolution=12)
+                adc.set_scale_factor(2.482) # calibrated with a multimeter
+                for i in range(length):
+                    data += [adc.convert_and_read()]
+                    time.sleep(0.0195)
             
-            for i in range(length):
-                bus.write_byte(1, 1) # take sample
-                time.sleep(0.013)
-                msg = i2c_msg.read(1,2) 
-                bus.i2c_rdwr(msg) # read sample
-                msg = list(msg)
-                data  += [(int(msg[0]) << 8) + int(msg[1])]
-                time.sleep(0.012)
-
-            bus.write_byte(1, 3) # turn off laser
-            time.sleep(0.1)
-            bus.write_byte(1, 5) # turn off led
-            time.sleep(0.1)
-        
-        return data
-    except:
-        logger.warning("communication with sensor failed")
-        return -1
-
-
+        except:
+            logger.warning("communication with adc failed")
+            data = -1
+            time.sleep(3)
+    
+    return data, error_count
 
 ############### FIREBASE FUNCTIONS ############### 
 def restart_firebase(app):
@@ -184,26 +215,30 @@ while True:
 
     if (time.time() - message_interval) >= last_message:
         last_message = time.time()
-        # off, on = collect_sample()
 
-        error_count = -1
-        data = -1
-        while (data == -1) and (error_count < 10):
-            data = burst_collection(40 * 5)
-            error_count += 1
-            time.sleep(3)
-
-        data = {'data' : data, 'fs' : 38, 'error' : error_count}
+        ## SAMPLE FROM ALGAE SENSOR ##
+        data, error_count = burst_collection(40 * 5)
+        data = {'data' : data, 'fs' : 40, 'error' : error_count}
         sensor_id = "egg_eye_1"
         message_time = time.strftime('%Y%m%d_%H:%M:%S', time.localtime(time.time()))
-        sensor_ref = ref.child(sensor_id + "/fdata")
-        sensor_ref.child(message_time).set(data)
-        # try:
-        #     sensor_ref = ref.child(sensor_id + "/fdata")
-        #     sensor_ref.child(message_time).set(data)
-        # except:
-        #     logger.warning("uploading data message failed")
-        #     app, ref = restart_firebase(app)
+        try:
+            sensor_ref = ref.child(sensor_id + "/fdata")
+            sensor_ref.child(message_time).set(data)
+        except:
+            logger.warning("uploading algae data message failed")
+            app, ref = restart_firebase(app)
+
+        ## SAMPLE FROM TURBIDITY SENSOR ##
+        data, error_count = adc_burst_collection(40 * 5)
+        data = {'data' : data, 'fs' : 40, 'error' : error_count}
+        sensor_id = "egg_eye_1"
+        try:
+            sensor_ref = ref.child(sensor_id + "/adcdata")
+            sensor_ref.child(message_time).set(data)
+        except:
+            logger.warning("uploading adc data message failed")
+            app, ref = restart_firebase(app)
+
 
 ############### END MAIN LOOP ###############
 
