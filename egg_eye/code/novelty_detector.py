@@ -1,5 +1,4 @@
 import numpy as np
-import matplotlib.pyplot as plt
 import firebase_admin
 from firebase_admin import db
 from firebase_admin import credentials
@@ -8,10 +7,6 @@ import pickle
 import subprocess
 import time
 import logging
-import firebase_admin
-from firebase_admin import credentials
-from firebase_admin import db
-from datetime import datetime
 
 
 ############### Running On Startup ###############
@@ -30,7 +25,7 @@ from datetime import datetime
 #
 # Let the computer establish a network connection on reboot
 folder = "Desktop/Biomass/egg_eye/code/"
-folder = "" #for testing
+# folder = "" #for testing
 
 
 ############### FIREBASE FUNCTIONS ############### 
@@ -75,18 +70,20 @@ while True:
         fdata = db.reference('/egg_eye_1/adcdata').order_by_key().limit_to_last(2).get()
         data_key = list(adata.keys())[0]
         fs = adata[data_key]['fs']
-        adata = adata[data_key]['data']
-        fdata = fdata[data_key]['data']
-
+        adata = np.array(adata[data_key]['data']).astype('float')
+        fdata = np.array(fdata[data_key]['data']).astype('int')
+        adata = adata/adata.max()
+        fdata = fdata/fdata.max()
+        
         #compute the FFT
         N = 512
         a_fft = np.abs(fft(adata, N))[:N//2]
         f_fft = np.abs(fft(fdata, N))[:N//2]
 
         #load algorithm
-        with open('lof_a_empty_trained.pickle', 'rb') as file:
+        with open(folder + 'lof_a_empty_trained.pickle', 'rb') as file:
             lofa = pickle.load(file)
-        with open('lof_f_empty_trained.pickle', 'rb') as file:
+        with open(folder + 'lof_f_empty_trained.pickle', 'rb') as file:
             loff = pickle.load(file)
         
         #upload if not already done
