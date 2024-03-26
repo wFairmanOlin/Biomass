@@ -67,7 +67,7 @@ while True:
     try:
         #get the latest data
         adata = db.reference('/egg_eye_1/adcdata').order_by_key().limit_to_last(1).get()
-        fdata = db.reference('/egg_eye_1/adcdata').order_by_key().limit_to_last(2).get()
+        fdata = db.reference('/egg_eye_1/fdata').order_by_key().limit_to_last(2).get()
         data_key = list(adata.keys())[0]
         fs = adata[data_key]['fs']
         adata = np.array(adata[data_key]['data']).astype('float')
@@ -90,7 +90,7 @@ while True:
         last_predict = db.reference('/egg_eye_1/adetect').order_by_key().limit_to_last(1).get()
 
         if not last_predict:
-            last_predict = '1999'
+            last_predict = '19990517' #some random old timestamp
         else:
             last_predict = list(last_predict.keys())[0]
 
