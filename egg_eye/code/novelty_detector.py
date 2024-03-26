@@ -88,18 +88,13 @@ while True:
         
         #upload if not already done
         last_predict = db.reference('/egg_eye_1/adetect').order_by_key().limit_to_last(1).get()
-        last_predict = list(last_predict.keys())[0]
 
         if not last_predict:
-            #calculate a data
-            output = lofa.predict([a_fft])[0]
-            output = 'outlier' if output == -1 else 'inlier'
-            db.reference('/egg_eye_1/adetect').child(data_key).set(str(output))
-            #calculate f data
-            output = loff.predict([f_fft])[0]
-            output = 'outlier' if output == -1 else 'inlier'
-            db.reference('/egg_eye_1/fdetect').child(data_key).set(str(output))
-        else if last_predict != data_key:
+            last_predict = '1999'
+        else:
+            last_predict = list(last_predict.keys())[0]
+
+        if last_predict != data_key:
             #calculate a data
             output = lofa.predict([a_fft])[0]
             output = 'outlier' if output == -1 else 'inlier'
