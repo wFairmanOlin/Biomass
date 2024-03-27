@@ -44,7 +44,62 @@ def get_IP():
     terminalResponse = subprocess.run(['hostname', '-I'], capture_output=True, text=True)
     return terminalResponse.stdout
 
+############### DETECTION ###############
+def novelty_prediction(adata, fdata):
+    data_key = list(adata.keys())[0]
+    fs = adata[data_key]['fs']
+    adata = np.array(adata[data_key]['data']).astype('float')
+    fdata = np.array(fdata[data_key]['data']).astype('int')
+    adata = adata/adata.max()
+    fdata = fdata/fdata.max()
 
+    #compute the FFT
+    N = 512
+    NDIV = 16
+    a_fft = np.abs(fft(adata, N))[:N//NDIV]
+    f_fft = np.abs(fft(fdata, N))[:N//2]
+
+    #load algorithm
+    with open(folder + 'lof_a_empty_trained.pickle', 'rb') as file:
+        lofa = pickle.load(file)
+    with open(folder + 'lof_f_empty_trained.pickle', 'rb') as file:
+        loff = pickle.load(file)
+
+    #upload if not already done
+    last_predict = db.reference('/egg_eye_1/adetect').order_by_key().limit_to_last(1).get()
+
+    if not last_predict:
+        last_predict = '19990517' #some random old timestamp
+    else:
+        last_predict = list(last_predict.keys())[0]
+
+    if last_predict != data_key:
+        #calculate a data
+        output = lofa.predict([a_fft])[0]
+        output = 'outlier' if output == -1 else 'inlier'
+        db.reference('/egg_eye_1/adetect').child(data_key).set(str(output))
+        #calculate f data
+        output = loff.predict([f_fft])[0]
+        output = 'outlier' if output == -1 else 'inlier'
+        db.reference('/egg_eye_1/fdetect').child(data_key).set(str(output))
+
+def peak_detection(adata):
+    data_key = list(adata.keys())[0]
+    #upload if not already done
+    last_peak = db.reference('/egg_eye_1/apeak').order_by_key().limit_to_last(1).get()
+
+    if not last_peak:
+        last_peak = '19990517' #some random old timestamp
+    else:
+        last_peak = list(last_peak.keys())[0]
+
+    if last_peak != data_key:
+        x = np.array(adata[data_key]['data']).astype('float')
+        peaks = x[x < (x.mean() - 4 * x.std())]
+        peaks = np.count_nonzero(peaks)
+        #calculate a data
+        db.reference('/egg_eye_1/apeak').child(data_key).set(str(peaks))
+        
 ############### LOGGING ###############
 logging.basicConfig(format='%(asctime)s %(levelname)s: %(message)s', filename=folder + 'log.log', encoding='utf-8',
                     level=logging.INFO)
@@ -68,42 +123,13 @@ while True:
         #get the latest data
         adata = db.reference('/egg_eye_1/adcdata').order_by_key().limit_to_last(1).get()
         fdata = db.reference('/egg_eye_1/fdata').order_by_key().limit_to_last(2).get()
-        data_key = list(adata.keys())[0]
-        fs = adata[data_key]['fs']
-        adata = np.array(adata[data_key]['data']).astype('float')
-        fdata = np.array(fdata[data_key]['data']).astype('int')
-        adata = adata/adata.max()
-        fdata = fdata/fdata.max()
-        
-        #compute the FFT
-        N = 512
-        NDIV = 16
-        a_fft = np.abs(fft(adata, N))[:N//NDIV]
-        f_fft = np.abs(fft(fdata, N))[:N//2]
-
-        #load algorithm
-        with open(folder + 'lof_a_empty_trained.pickle', 'rb') as file:
-            lofa = pickle.load(file)
-        with open(folder + 'lof_f_empty_trained.pickle', 'rb') as file:
-            loff = pickle.load(file)
-        
-        #upload if not already done
-        last_predict = db.reference('/egg_eye_1/adetect').order_by_key().limit_to_last(1).get()
-
-        if not last_predict:
-            last_predict = '19990517' #some random old timestamp
-        else:
-            last_predict = list(last_predict.keys())[0]
-
-        if last_predict != data_key:
-            #calculate a data
-            output = lofa.predict([a_fft])[0]
-            output = 'outlier' if output == -1 else 'inlier'
-            db.reference('/egg_eye_1/adetect').child(data_key).set(str(output))
-            #calculate f data
-            output = loff.predict([f_fft])[0]
-            output = 'outlier' if output == -1 else 'inlier'
-            db.reference('/egg_eye_1/fdetect').child(data_key).set(str(output))
+    except:
+        logger.warning("data download failed")
+        app, ref = restart_firebase(app)
+    
+    try:
+        novelty_prediction(adata, fdata)
+        peak_detection(adata)
     except:
         logger.warning("prediction failed")
         app, ref = restart_firebase(app)
