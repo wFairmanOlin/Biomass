@@ -77,8 +77,9 @@ while True:
         
         #compute the FFT
         N = 512
+        NDIV = 16
         a_fft = np.abs(fft(adata, N))[:N//2]
-        f_fft = np.abs(fft(fdata, N))[:N//2]
+        f_fft = np.abs(fft(fdata, N))[:N//NDIV]
 
         #load algorithm
         with open(folder + 'lof_a_empty_trained.pickle', 'rb') as file:
